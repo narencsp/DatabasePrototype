@@ -30,7 +30,7 @@ public class UserLogin {
         try
         {
 
-            BufferedReader br = new BufferedReader(new FileReader("/home/narendran/IdeaProjects/DDBMS/src/com/package/presentation/users.csv"));
+            BufferedReader br = new BufferedReader(new FileReader("/home/narendran/IdeaProjects/csci-5408-w2021-project-group15/src/com/package/presentation/users.csv"));
             while ((line = br.readLine()) != null)
             {
                 String[] users = line.split(splitBy);
