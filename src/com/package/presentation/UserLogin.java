@@ -2,38 +2,71 @@ package presentation;
 
 import java.io.*;
 
+import java.util.Base64;
 import java.util.Scanner;
 
 public class UserLogin {
 
+
     private String userName, password;
 
-
+    public enum UserLoginFlag{
+        USER_VALID,
+        USER_WRONGCREDENTIALS,
+        USER_NULL
+    }
+    UserLoginFlag ulf;
     public void getUsername() {
         Scanner in = new Scanner(System.in);
         System.out.println("Enter Username");
         userName = in.nextLine();
         System.out.println("Enter Password");
         password = in.nextLine();
+        ulf=ValidateUser(userName,password);
+        switch(ulf){
+            case USER_NULL:
+                System.out.println("Enter credentials");
+                break;
+            case USER_VALID:
+                System.out.println("Credentials are valid");
+                break;
+            case USER_WRONGCREDENTIALS:
+                System.out.println("Username/password is incorrect, try again!");
+                break;
+        }
+    }
 
-        Boolean result = AuthenticateUser(userName, password);
-        if(result.equals(true))
-            System.out.println("User found in Table");
-        else
-            System.out.println("User not found in Table");
+    private UserLoginFlag ValidateUser(String userName, String password) {
+        Boolean result=false;
+        UserLoginFlag ret = null;
+        if(userName.isEmpty() || password.isEmpty()){
+            ret = ulf.USER_NULL;
+        }
+        else{
+
+             result = AuthenticateUser(userName, password);
+             if(result.equals(true)){
+                 ret =  ulf.USER_VALID;
+             }
+             else{
+                 ret = ulf.USER_WRONGCREDENTIALS;
+             }
+        }
+        return ret;
     }
 
     public Boolean AuthenticateUser(String userName, String password)  {
-        Boolean value=false;
         String line = "";
         String splitBy = ",";
+
         try
         {
 
-            BufferedReader br = new BufferedReader(new FileReader("/home/narendran/IdeaProjects/DDBMS/src/com/package/presentation/users.csv"));
+            BufferedReader br = new BufferedReader(new FileReader("src/com/package/presentation/users.csv"));
             while ((line = br.readLine()) != null)
             {
                 String[] users = line.split(splitBy);
+                users[1] =decryptPassword(users[1]);
                 if(users[0].equals(userName) && users[1].equals(password)){
                     return true;
                 }
@@ -45,6 +78,10 @@ public class UserLogin {
             e.printStackTrace();
         }
         return false;
+    }
+
+    private static String decryptPassword(String encryptedPassword){
+        return new String(Base64.getMimeDecoder().decode(encryptedPassword));
     }
 
 }
