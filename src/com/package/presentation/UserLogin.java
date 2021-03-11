@@ -36,7 +36,7 @@ public class UserLogin {
         }
     }
 
-    private UserLoginFlag ValidateUser(String userName, String password) {
+     protected UserLoginFlag ValidateUser(String userName, String password) {
         Boolean result=false;
         UserLoginFlag ret = null;
         if(userName.isEmpty() || password.isEmpty()){
@@ -55,7 +55,7 @@ public class UserLogin {
         return ret;
     }
 
-    public Boolean AuthenticateUser(String userName, String password)  {
+    protected Boolean AuthenticateUser(String userName, String password)  {
         String line = "";
         String splitBy = ",";
 

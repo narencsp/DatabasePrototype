@@ -29,7 +29,7 @@ public class UserCreation {
             System.out.println("User already exists");
         }
         else{
-            ucf=ValidateDetails(userName,password);
+            ucf=ValidateDetails(userName,password,rPassword);
             switch(ucf){
                 case USER_NULL:
                     System.out.println("Enter credentials");
@@ -44,7 +44,7 @@ public class UserCreation {
         }
     }
 
-    private Boolean checkUserAlreadyExists(String userName){
+    protected Boolean checkUserAlreadyExists(String userName){
         String line = "";
         String splitBy = ",";
 
@@ -68,8 +68,8 @@ public class UserCreation {
         return false;
     }
 
-    private UserCreateFlag ValidateDetails(String userName, String password) throws IOException {
-        Boolean result=false;
+    protected UserCreateFlag ValidateDetails(String userName, String password, String rPassword) throws IOException {
+
         UserCreation.UserCreateFlag ret = null;
         if(userName.isEmpty() || password.isEmpty()){
             ret = ucf.USER_NULL;
@@ -93,7 +93,7 @@ public class UserCreation {
 
     private void createUser(String userName, String password) throws IOException {
 
-        PrintWriter pw = null;
+
         FileWriter fw = null;
 
         fw = new FileWriter("src/com/package/presentation/users.csv", true);
