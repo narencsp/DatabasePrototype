@@ -5,6 +5,8 @@ import org.junit.jupiter.api.Test;
 import java.io.IOException;
 
 import static org.junit.jupiter.api.Assertions.*;
+import static presentation.UserCreation.UserCreateFlag.USER_NULL;
+import static presentation.UserCreation.UserCreateFlag.USER_PASSWORDMISMATCH;
 
 class UserCreationTest {
     UserCreation uc = new UserCreation();
@@ -19,8 +21,8 @@ class UserCreationTest {
 
     void ValidateDetailsTest() throws IOException {
         ucf = uc.ValidateDetails("", "","");
-        assertEquals(ucf,ucf.USER_NULL);
+        assertEquals(ucf, USER_NULL);
         ucf = uc.ValidateDetails("phil", "phil","phil1");
-        assertEquals(ucf,ucf.USER_PASSWORDMISMATCH);
+        assertEquals(ucf, USER_PASSWORDMISMATCH);
     }
 }
