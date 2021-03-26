@@ -1,4 +1,4 @@
 package data;
 
-public class Column {
+public abstract class Column {
 }
