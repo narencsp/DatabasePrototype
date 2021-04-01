@@ -1,10 +1,12 @@
 package presentation;
 
+import java.util.*;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
 public class Select implements Query{
     String selectRegex = "SELECT\\s+(.+?)\\s*\\s+FROM\\s+(.*?)\\s*(WHERE\\s+(.*?)\\s*)?;";
+    String columns,table_name,condition = "";
 
     @Override
     public Boolean checkSyntax(String statement) {
@@ -12,19 +14,40 @@ public class Select implements Query{
         Matcher matcher = re.matcher(statement);
         while (matcher.find()) {
             System.out.println(matcher.group(1));
+            columns = matcher.group(1).trim();
             System.out.println(matcher.group(2));
+            table_name = matcher.group(2).trim();
             if(matcher.group(3)!=null) {
                 System.out.println(matcher.group(3));
-                System.out.println(matcher.group(4));
+                System.out.println(matcher.group(4).trim());
+                condition = matcher.group(4);
             }
-
         }
         return matcher.matches();
     }
 
     @Override
-    public void getTokens(String statement) {
+    public Map<String, List<String>> getTokens() {
+        Map<String, List<String>> tokens = new HashMap<>();
+        List<String> table_name_list = new ArrayList<>();
+        table_name_list.add(table_name);
+        tokens.put("table", table_name_list);
 
+        List<String> columns_list = Arrays.asList(columns.split(","));
+        tokens.put("columns", columns_list);
+
+        if(!condition.equals("")) {
+            List<String> condition_column_list = new ArrayList<>();
+            List<String> values_list = new ArrayList<>();
+
+            List<String> condition_breakdown = Arrays.asList(condition.split("="));
+            condition_column_list.add(condition_breakdown.get(0).trim());
+            values_list.add(condition_breakdown.get(1).trim());
+
+            tokens.put("condition_column", condition_column_list);
+            tokens.put("condition_value", values_list);
+        }
+        return tokens;
     }
 
     @Override

@@ -1,5 +1,8 @@
 package presentation;
 
+import java.util.List;
+import java.util.Map;
+
 public class QueryParser{
 
     Query query = null;
@@ -13,19 +16,19 @@ public class QueryParser{
         DROP,
         INSERT
     }
-    public void getQueryDetails(String input_query){
+    public boolean getQueryDetails(String input_query){
         this.input_query = input_query;
         Types_of_query type;
         if(queryHasType(input_query)){
             type = getStatementKeyword(input_query);
-            System.out.println(type.toString());
-            check_syntex(type);
+            return check_syntex(type);
         }else{
             System.out.println("Please enter correct query!");
+            return false;
         }
     }
 
-    private void check_syntex(Types_of_query type) {
+    private boolean check_syntex(Types_of_query type) {
         switch (type) {
             case SELECT -> query = new Select();
             case INSERT -> query = new Insert();
@@ -35,10 +38,16 @@ public class QueryParser{
         }
         if(query.checkSyntax(input_query)){
             System.out.println("Syntex is correct!");
-            query.getTokens(input_query);
+            return true;
+            //query.getTokens(input_query);
         }else{
             System.out.println("Syntex is not correct!");
+            return false;
         }
+    }
+
+    public Map<String,List<String>> get_tokens(){
+        return query.getTokens();
     }
 
     private boolean queryHasType(String input_query) {
@@ -65,11 +74,18 @@ public class QueryParser{
 
     public static void main(String[] args){
         QueryParser queryParser = new QueryParser();
-        //queryParser.getQueryDetails("INSERT INTO student (as,sadsa) VALUES (4,5);");
-        //queryParser.getQueryDetails("SELECT * FROM student WHERE id = 1;");
-        //queryParser.getQueryDetails("DELETE FROM student WHERE i=1;");
-        //queryParser.getQueryDetails("DROP TABLE student;");
-        queryParser.getQueryDetails("UPDATE student SET name = 'kp' WHERE student_id = 1;");
+        //boolean is_correct = queryParser.getQueryDetails("INSERT INTO student (as,sadsa) VALUES (4,5);");
+        boolean is_correct =queryParser.getQueryDetails("SELECT * FROM student WHERE id = 1;");
+        //boolean is_correct =queryParser.getQueryDetails("DELETE FROM student WHERE i=1;");
+        //boolean is_correct =queryParser.getQueryDetails("DROP TABLE student;");
+        //boolean is_correct =queryParser.getQueryDetails("UPDATE student SET name = 'kp' WHERE student_id = 1;");
+
+        if(is_correct){
+            Map<String, List<String>> tokens = queryParser.get_tokens();
+            System.out.println(tokens.get("table").get(0));
+            //System.out.println(tokens.get("columns").get(0));
+            //System.out.println(tokens.get("values").get(0));
+        }
 
     }
 
