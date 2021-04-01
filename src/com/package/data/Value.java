@@ -1,8 +1,11 @@
 package data;
 
-public abstract class Value {
-    protected Object object;
-    private Object getObject() {
+public class Value {
+    private final Object object;
+    public Value(Object object) {
+        this.object = object;
+    }
+    private Object getValue() {
         return object;
     }
 }

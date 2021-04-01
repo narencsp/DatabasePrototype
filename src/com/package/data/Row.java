@@ -2,7 +2,7 @@ package data;
 
 import java.util.Collection;
 
-public abstract class Row {
+public class Row {
     private final Collection<Value> values;
 
     public Row(Collection<Value> values) {
