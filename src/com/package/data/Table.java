@@ -6,7 +6,8 @@ import java.util.Objects;
 
 public class Table {
     private String name;
-    private final Collection<Row> rows;
+    private Collection<String> columnNames;
+    private Collection<Row> rows;
 
     public Table(String name, Collection<Row> rows) {
         this.name = name;
@@ -30,12 +31,32 @@ public class Table {
         rows.remove(row);
     }
 
+    public void removeRow(Value value) {
+        rows.removeIf(r -> r.getValues().contains(value));
+    }
+
+    public void removeRow(Value value, int index) {
+        rows.removeIf(r -> r.getValues().toArray()[index].equals(value));
+    }
+
     public String getName() {
         return name;
     }
 
     public void setName(String name) {
         this.name = name;
+    }
+
+    public void setRows(Collection<Row> rows) {
+        this.rows = rows;
+    }
+
+    public void setColumnNames(Collection<String> columnNames) {
+        this.columnNames = columnNames;
+    }
+
+    public int getColumnNumber(String columnName) {
+        return 0;
     }
 
     @Override

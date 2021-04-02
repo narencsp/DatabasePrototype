@@ -44,4 +44,13 @@ public class Database {
     public int getSize() {
         return tables.size();
     }
+
+    public Table getTable(String tableName){
+        for (Table t : tables) {
+            if (t.getName().equals(tableName)) {
+                return t;
+            }
+        }
+        return null;
+    }
 }

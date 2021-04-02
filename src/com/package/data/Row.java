@@ -9,7 +9,7 @@ public class Row {
         this.values = values;
     }
 
-    public Collection<Value> getValueList() {
+    public Collection<Value> getValues() {
         return values;
     }
 }

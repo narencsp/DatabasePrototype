@@ -1,4 +1,5 @@
 import data.Database;
+import data.Row;
 import data.Table;
 
 import java.util.Collection;
@@ -33,14 +34,17 @@ public class DeleteQuery {
         // If no condition, delete all records
         // If condition, delete records that match the condition
 
+        Collection<Table> tables = database.getTables();
         if (condition == null) {
             // Delete all records from table
-            Collection<Table> tables = database.getTables();
             tables.removeIf(t -> t.getName().equals(tableName));
             database.setTables(tables);
         }
         else {
-
+            Table target = database.getTable(tableName);
+            Collection<Row> rows = target.getRows();
+            Row rowToRemove = null;
+            target.removeRow(rowToRemove);
         }
     }
 }
