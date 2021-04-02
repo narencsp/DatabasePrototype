@@ -13,8 +13,8 @@ public class DatabaseTest {
 
     @Before
     public void setUp() throws Exception {
-        testDatabase = new Database(new LinkedList<>());
-        testTable = new Table(new LinkedList<>());
+        testDatabase = new Database("DatabaseName");
+        testTable = new Table("TableName", new LinkedList<>());
         for (int i = 0; i < 10; i++) {
             List<Value> valueList = new LinkedList<>();
             for (int j = 0; j < 3; j++) {
@@ -27,12 +27,6 @@ public class DatabaseTest {
 
     @Test
     public void getTables() {
-        String test = "Test";
-        Object o = test;
-        System.out.println(o.toString());
-        Database d = new Database(new LinkedList<>());
-
-        Value testValue = new Value("Hello World!");
     }
 
     @Test
