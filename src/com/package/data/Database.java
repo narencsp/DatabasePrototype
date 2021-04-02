@@ -5,7 +5,7 @@ import java.util.Collection;
 
 public class Database {
     private String name;
-    private final Collection<Table> tables;
+    private Collection<Table> tables;
 
     public Database(String name, Collection<Table> tables) {
         this.name = name;
@@ -27,6 +27,10 @@ public class Database {
 
     public boolean addTable(Table table) {
         return tables.add(table);
+    }
+
+    public void setTables(Collection<Table> tables) {
+        this.tables = tables;
     }
 
     public String getName() {
