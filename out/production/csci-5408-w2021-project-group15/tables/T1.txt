@@ -1,0 +1,9 @@
+#TABLE
+@database
+D1
+@table
+T1
+@column
+Name~Age~Gender~Address
+@value
+Joe~30~Male~France

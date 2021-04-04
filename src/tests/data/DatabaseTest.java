@@ -1,7 +1,9 @@
 package data;
 
+
 import org.junit.Before;
-import org.junit.Test;
+import org.junit.jupiter.api.Test;
+
 
 import java.util.LinkedList;
 import java.util.List;

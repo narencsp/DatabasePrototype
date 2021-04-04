@@ -1,7 +1,5 @@
 package presentation;
 
-import main.Main;
-
 import java.io.*;
 import java.nio.charset.StandardCharsets;
 import java.util.Base64;
@@ -9,6 +7,7 @@ import java.util.Scanner;
 
 public class UserCreation {
     private String userName, password, rPassword;
+    public String recordName, recordValue;
 
     public enum UserCreateFlag{
         USER_PASSWORDMATCH,
@@ -46,18 +45,27 @@ public class UserCreation {
 
     protected Boolean checkUserAlreadyExists(String userName){
         String line = "";
-        String splitBy = ",";
+        String splitBy = "~";
 
         try
         {
 
-            BufferedReader br = new BufferedReader(new FileReader("src/com/package/presentation/users.csv"));
+            BufferedReader br = new BufferedReader(new FileReader("src/com/package/tables/users.txt"));
             while ((line = br.readLine()) != null)
             {
-                String[] users = line.split(splitBy);
-                if(users[0].equals(userName)){
-                    return  true;
+                if(line.equals("#USER")){
+                    recordName = line;
                 }
+                else if(line.equals("@user")){
+                    recordValue = line;
+                }
+                else{
+                    String[] users = line.split(splitBy);
+                    if(users[0].equals(userName)){
+                        return  true;
+                    }
+                }
+
             }
 
         }
@@ -96,10 +104,10 @@ public class UserCreation {
 
         FileWriter fw = null;
 
-        fw = new FileWriter("src/com/package/presentation/users.csv", true);
+        fw = new FileWriter("src/com/package/presentation/users.txt", true);
 
         fw.append("\n");
-        fw.append(userName + ",");
+        fw.append(userName + "~");
         fw.append(password);
         fw.flush();
         fw.close();
