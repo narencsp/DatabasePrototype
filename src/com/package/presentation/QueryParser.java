@@ -75,11 +75,11 @@ public class QueryParser{
         return null;
     }
 
-    public static void main(String[] args){
+    /*public static void main(String[] args){
         QueryParser queryParser = new QueryParser();
         //boolean is_correct = queryParser.getQueryDetails("INSERT INTO student (as,sadsa) VALUES (4,5);");
         //boolean is_correct =queryParser.getQueryDetails("SELECT * FROM student WHERE id = 1;");
-        boolean is_correct =queryParser.getQueryDetails("CREATE TABLE db1.student (id INT PRIMARY KEY,name VARCHAR(100),last_name VARCHAR(100));");
+        //boolean is_correct =queryParser.getQueryDetails("CREATE TABLE db1.student (id INT PRIMARY KEY,name VARCHAR(100),last_name VARCHAR(100));");
         //boolean is_correct =queryParser.getQueryDetails("DELETE FROM student WHERE i=1;");
         //boolean is_correct =queryParser.getQueryDetails("DROP TABLE student;");
         //boolean is_correct =queryParser.getQueryDetails("UPDATE student SET name = 'kp' WHERE student_id = 1;");
@@ -94,7 +94,7 @@ public class QueryParser{
             //System.out.println(tokens.get("values").get(0));
         }
 
-    }
+    }*/
 
 
 }

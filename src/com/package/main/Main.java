@@ -2,12 +2,14 @@ package main;
 
 import iooperations.CreateTable;
 import iooperations.DeleteTable;
+import iooperations.SelectOperation;
 import iooperations.WriteTable;
 import presentation.QueryParser;
 
 import presentation.UserCreation;
 import presentation.UserLogin;
 
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
 import java.util.Scanner;
@@ -78,6 +80,7 @@ public class Main {
     private static  void startQuerySession() throws Exception {
         String query = "";
         System.out.println("Enter Query:");
+        Scanner in = new Scanner(System.in);
         query = in.nextLine();
         QueryParser queryParser = new QueryParser();
         if(queryParser.getQueryDetails(query)){
@@ -99,7 +102,8 @@ public class Main {
                     writeTable.insertIntoTable(tokens.get("table").get(0),tokens.get("values"));
                     break;
                 case SELECT:
-
+                    SelectOperation selectOperation = new SelectOperation();
+                    selectOperation.selectQueryOperation(tokens.get("table").get(0),tokens.get("columns"),tokens.get("condition"));
                     break;
                 case UPDATE:
 
