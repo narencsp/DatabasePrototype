@@ -38,14 +38,15 @@ public class Select implements Query{
 
         if(!condition.equals("")) {
             List<String> condition_column_list = new ArrayList<>();
-            List<String> values_list = new ArrayList<>();
+            condition_column_list.add(condition);
+            //List<String> values_list = new ArrayList<>();
 
-            List<String> condition_breakdown = Arrays.asList(condition.split("="));
-            condition_column_list.add(condition_breakdown.get(0).trim());
-            values_list.add(condition_breakdown.get(1).trim());
+            //List<String> condition_breakdown = Arrays.asList(condition.split("="));
+            //condition_column_list.add(condition_breakdown.get(0).trim());
+            //values_list.add(condition_breakdown.get(1).trim());
 
-            tokens.put("condition_column", condition_column_list);
-            tokens.put("condition_value", values_list);
+            tokens.put("condition", condition_column_list);
+            //tokens.put("condition_value", values_list);
         }
         return tokens;
     }

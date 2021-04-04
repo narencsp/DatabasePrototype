@@ -4,7 +4,7 @@ import java.io.*;
 import java.util.List;
 
 public class CreateTable {
-    public String createTable(String tablename, String dbName, List<String> columnNames){
+    public String createTable(String tablename, String dbName, List<String> columnNames, List<String> columnType, String primaryKey){
         String result = null;
         int temp=1;
         try

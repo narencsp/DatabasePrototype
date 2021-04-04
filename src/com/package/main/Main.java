@@ -1,5 +1,8 @@
 package main;
 
+import iooperations.CreateTable;
+import iooperations.DeleteTable;
+import iooperations.WriteTable;
 import presentation.QueryParser;
 
 import presentation.UserCreation;
@@ -72,7 +75,7 @@ public class Main {
 
     }
 
-    private static  void startQuerySession() {
+    private static  void startQuerySession() throws Exception {
         String query = "";
         System.out.println("Enter Query:");
         query = in.nextLine();
@@ -81,16 +84,19 @@ public class Main {
             Map<String, List<String>> tokens = queryParser.get_tokens();
             switch (queryParser.type){
                 case CREATE:
-
+                    CreateTable createTable = new CreateTable();
+                    createTable.createTable(tokens.get("table").get(0),tokens.get("database").get(0),tokens.get("column_name"),tokens.get("column_type"),tokens.get("primary_key").get(0));
                     break;
                 case DROP:
-
+                    DeleteTable deleteTable = new DeleteTable();
+                    deleteTable.deleteTable(tokens.get("table").get(0));
                     break;
                 case DELETE:
 
                     break;
                 case INSERT:
-
+                    WriteTable writeTable = new WriteTable();
+                    writeTable.insertIntoTable(tokens.get("table").get(0),tokens.get("values"));
                     break;
                 case SELECT:
 
