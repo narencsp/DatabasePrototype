@@ -8,8 +8,9 @@ public class QueryParser{
     Query query = null;
     String[] splitedForKeyword;
     String input_query;
+    public Types_of_query type;
 
-    enum Types_of_query{
+    public enum Types_of_query{
         SELECT,
         UPDATE,
         DELETE,
@@ -19,7 +20,6 @@ public class QueryParser{
     }
     public boolean getQueryDetails(String input_query){
         this.input_query = input_query;
-        Types_of_query type;
         if(queryHasType(input_query)){
             type = getStatementKeyword(input_query);
             return check_syntex(type);
@@ -75,11 +75,11 @@ public class QueryParser{
         return null;
     }
 
-    public static void main(String[] args){
+    /*public static void main(String[] args){
         QueryParser queryParser = new QueryParser();
         //boolean is_correct = queryParser.getQueryDetails("INSERT INTO student (as,sadsa) VALUES (4,5);");
-        //boolean is_correct =queryParser.getQueryDetails("SELECT * FROM student WHERE id = 1;");
-        boolean is_correct =queryParser.getQueryDetails("CREATE TABLE student (id INT PRIMARY KEY,name VARCHAR(100),last_name VARCHAR(100));");
+        boolean is_correct =queryParser.getQueryDetails("SELECT * FROM student WHERE id = 1;");
+        //boolean is_correct =queryParser.getQueryDetails("CREATE TABLE student (id INT PRIMARY KEY,name VARCHAR(100),last_name VARCHAR(100));");
         //boolean is_correct =queryParser.getQueryDetails("DELETE FROM student WHERE i=1;");
         //boolean is_correct =queryParser.getQueryDetails("DROP TABLE student;");
         //boolean is_correct =queryParser.getQueryDetails("UPDATE student SET name = 'kp' WHERE student_id = 1;");
@@ -93,7 +93,7 @@ public class QueryParser{
             //System.out.println(tokens.get("values").get(0));
         }
 
-    }
+    }*/
 
 
 }

@@ -15,7 +15,7 @@ public class UserLogin {
         USER_WRONGCREDENTIALS,
         USER_NULL
     }
-    UserLoginFlag ulf;
+    public UserLoginFlag ulf;
     public void getUsername() {
         Scanner in = new Scanner(System.in);
         System.out.println("Enter Username");
