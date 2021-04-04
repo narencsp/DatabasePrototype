@@ -9,6 +9,7 @@ public class UserLogin {
 
 
     private String userName, password;
+    public String recordName, tableName, recordValue;
 
     public enum UserLoginFlag{
         USER_VALID,
@@ -57,19 +58,28 @@ public class UserLogin {
 
     protected Boolean AuthenticateUser(String userName, String password)  {
         String line = "";
-        String splitBy = ",";
+        String splitBy = "~";
 
         try
         {
 
-            BufferedReader br = new BufferedReader(new FileReader("src/com/package/presentation/users.csv"));
+            BufferedReader br = new BufferedReader(new FileReader("src/com/package/tables/users.txt"));
             while ((line = br.readLine()) != null)
             {
-                String[] users = line.split(splitBy);
-                users[1] =decryptPassword(users[1]);
-                if(users[0].equals(userName) && users[1].equals(password)){
-                    return true;
+                if(line.equals("#USER")){
+                    recordName = line;
                 }
+                else if(line.equals("@user")){
+                    recordValue = line;
+                }
+                else{
+                    String[] users = line.split(splitBy);
+                    users[1] =decryptPassword(users[1]);
+                    if(users[0].equals(userName) && users[1].equals(password)){
+                        return true;
+                    }
+                }
+
             }
 
         }
