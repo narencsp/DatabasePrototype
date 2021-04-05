@@ -1,9 +1,6 @@
 package main;
 
-import iooperations.CreateTable;
-import iooperations.DeleteTable;
-import iooperations.SelectOperation;
-import iooperations.WriteTable;
+import iooperations.*;
 import presentation.QueryParser;
 
 import presentation.UserCreation;
@@ -88,25 +85,37 @@ public class Main {
             switch (queryParser.type){
                 case CREATE:
                     CreateTable createTable = new CreateTable();
-                    createTable.createTable(tokens.get("table").get(0),tokens.get("database").get(0),tokens.get("column_name"),tokens.get("column_type"),tokens.get("primary_key").get(0));
+                    createTable.createTable(tokens.get("table").get(0),tokens.get("database").get(0),tokens.get("column_name"),tokens.get("column_type"));
                     break;
                 case DROP:
                     DeleteTable deleteTable = new DeleteTable();
                     deleteTable.deleteTable(tokens.get("table").get(0));
                     break;
                 case DELETE:
-
+                    DeleteOperation deleteOperation = new DeleteOperation();
+                    if(tokens.containsKey("values")) {
+                        deleteOperation.deleteOperation(tokens.get("table").get(0), tokens.get("values"));
+                    }else{
+                        List<String> blank_list = new ArrayList<>();
+                        deleteOperation.deleteOperation(tokens.get("table").get(0), blank_list);
+                    }
                     break;
                 case INSERT:
-                    WriteTable writeTable = new WriteTable();
-                    writeTable.insertIntoTable(tokens.get("table").get(0),tokens.get("values"));
+                    InsertOperation writeTable = new InsertOperation();
+                    writeTable.checkInsertValues(tokens.get("table").get(0),tokens.get("values"));
                     break;
                 case SELECT:
                     SelectOperation selectOperation = new SelectOperation();
                     selectOperation.selectQueryOperation(tokens.get("table").get(0),tokens.get("columns"),tokens.get("condition"));
                     break;
                 case UPDATE:
-
+                    UpdateOperation updateOperation = new UpdateOperation();
+                    if(tokens.containsKey("condition")) {
+                        updateOperation.updateOperation(tokens.get("table").get(0), tokens.get("columns"), tokens.get("values"), tokens.get("condition"));
+                    }else{
+                        List<String> blank_list = new ArrayList<>();
+                        updateOperation.updateOperation(tokens.get("table").get(0), tokens.get("columns"), tokens.get("values"), blank_list);
+                    }
                     break;
                 default:
                     System.out.println("Something went wrong!");

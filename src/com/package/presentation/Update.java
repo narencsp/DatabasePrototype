@@ -5,8 +5,8 @@ import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
 public class Update implements Query{
-    String updateRegex = "UPDATE\\s+(\\S+)\\s*SET\\s+(.*?)\\s*WHERE\\s+(.*?);";
-    String table_name, value, condition;
+    String updateRegex = "UPDATE\\s+(\\S+)\\s*SET\\s+(.*?)\\s*(WHERE\\s+(.*?))?;";
+    String table_name, value, condition = "";
 
     @Override
     public Boolean checkSyntax(String statement) {
@@ -17,8 +17,11 @@ public class Update implements Query{
             table_name = matcher.group(1);
             System.out.println(matcher.group(2));
             value = matcher.group(2);
-            System.out.println(matcher.group(3));
-            condition = matcher.group(3);
+            if(matcher.group(3)!=null) {
+                System.out.println(matcher.group(3));
+                System.out.println(matcher.group(4));
+                condition = matcher.group(4);
+            }
         }
         return matcher.matches();
     }
@@ -45,8 +48,11 @@ public class Update implements Query{
         tokens.put("columns", column_list);
         tokens.put("values", value_list);
 
-        List<String> condition_list = new ArrayList<>();
-        tokens.put("condition", condition_list);
+        if(!condition.equals("")) {
+            List<String> condition_list = new ArrayList<>();
+            condition_list.add(condition);
+            tokens.put("condition", condition_list);
+        }
         return tokens;
     }
 

@@ -44,12 +44,13 @@ public class Create implements Query{
         int i=0;
         for(String columns : columns_seperated){
             List<String> columns_parts = Arrays.asList(columns.trim().split(" "));
-            column_name_list.add(columns_parts.get(0).trim());
-            column_type_list.add(columns_parts.get(1).trim());
+
             if(columns_parts.size()>2){
-                List<String> primary_key_list = new ArrayList<>();
-                primary_key_list.add(columns_parts.get(0).trim());
-                tokens.put("primary_key", primary_key_list);
+                column_name_list.add(columns_parts.get(0).trim());
+                column_type_list.add(columns_parts.get(1).trim()+"PK");
+            }else{
+                column_name_list.add(columns_parts.get(0).trim());
+                column_type_list.add(columns_parts.get(1).trim());
             }
         }
         tokens.put("column_name", column_name_list);
