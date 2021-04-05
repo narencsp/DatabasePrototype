@@ -28,6 +28,7 @@ public class WriteTable {
             }
             else{
                 response = "Error accessing the table";
+                //call.logfunction("INSERT",columnValues,tableName, response);
             }
             fileWriter.flush();
             fileWriter.close();

@@ -32,6 +32,18 @@ public class CreateTable {
 
                                     temp++;
                                 }
+                                temp=1;
+                                fileWriter.append("\n"+"@meta\n");
+                                for(String column : columnType){
+                                    if(temp==(columnType.size())){
+                                        fileWriter.append(column);
+                                    }
+                                    else{
+                                        fileWriter.append(column+"~");
+                                    }
+
+                                    temp++;
+                                }
                                 fileWriter.append("\n"+"@value");
                                 result = "Inserted Successfully";
                             }

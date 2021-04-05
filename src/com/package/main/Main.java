@@ -47,13 +47,20 @@ public class Main {
                 String result = deleteTable.deleteTable("dummy1");*/
 
                 //for creating a table
-               /* CreateTable createTable = new CreateTable();
+                /*CreateTable createTable = new CreateTable();
                 List<String> columns = new ArrayList<>();
                 columns.add("Name");
                 columns.add("Age");
                 columns.add("Gender");
                 columns.add("Address");
-                String result = createTable.createTable("T1","D1",columns);*/
+
+                List<String> columnDataType = new ArrayList<>();
+                columnDataType.add("varchar[20]");
+                columnDataType.add("int[10]");
+                columnDataType.add("varchar[10]");
+                columnDataType.add("varchar[50]");
+
+                String result = createTable.createTable("T1","D1",columns,columnDataType);*/
 
                 //for creating a database
                 /*CreateDatabase createDatabase = new CreateDatabase();
@@ -67,8 +74,9 @@ public class Main {
                 columns.add("Male");
                 columns.add("France");
                 String result = writeTable.insertIntoTable("T1",columns);*/
-
-                //System.out.println(result);
+                ReadTable readTable = new ReadTable();
+                readTable.readTableValues("T1");
+              //  System.out.println(result);
                 break;
         }
 
