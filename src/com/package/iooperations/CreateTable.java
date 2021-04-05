@@ -4,7 +4,7 @@ import java.io.*;
 import java.util.List;
 
 public class CreateTable {
-    public String createTable(String tablename, String dbName, List<String> columnNames, List<String> columnType, String primaryKey){
+    public String createTable(String tablename, String dbName, List<String> columnNames, List<String> columnType){
         String result = null;
         int temp=1;
         try
@@ -24,6 +24,18 @@ public class CreateTable {
                                 fileWriter.append("#TABLE\n@database\n"+dbName+"\n@table\n"+tablename+"\n@column\n");
                                 for(String column : columnNames){
                                     if(temp==(columnNames.size())){
+                                        fileWriter.append(column);
+                                    }
+                                    else{
+                                        fileWriter.append(column+"~");
+                                    }
+
+                                    temp++;
+                                }
+                                temp=1;
+                                fileWriter.append("\n"+"@meta\n");
+                                for(String column : columnType){
+                                    if(temp==(columnType.size())){
                                         fileWriter.append(column);
                                     }
                                     else{
