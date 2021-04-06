@@ -10,4 +10,4 @@ varchar[20]~int[10]~varchar[10]~varchar[50]
 @value
 Joe~15~Male~France
 Eve~20~Female~Canada
-Suosa~35~Female~India
+Suosa~35~Female~India#TABLE

@@ -6,10 +6,7 @@ import presentation.QueryParser;
 import presentation.UserCreation;
 import presentation.UserLogin;
 
-import java.util.ArrayList;
-import java.util.List;
-import java.util.Map;
-import java.util.Scanner;
+import java.util.*;
 
 public class Main {
     static Scanner in;
@@ -74,9 +71,26 @@ public class Main {
                 columns.add("Male");
                 columns.add("France");
                 String result = writeTable.insertIntoTable("T1",columns);*/
-                ReadTable readTable = new ReadTable();
-                readTable.readTableValues("T1");
-              //  System.out.println(result);
+
+
+                //for reading the table
+                /*ReadTable rt = new ReadTable();
+                Map<String, String> readTable = new LinkedHashMap<>();
+                readTable=rt.readTableValues("T1");
+                System.out.println(readTable.get("database"));
+                System.out.println(readTable.get("table"));
+                System.out.println(readTable.get("column"));
+                System.out.println(readTable.get("meta"));
+                System.out.println(readTable.get("value"));*/
+
+                //for updating/deleting the field in a table
+               /* ReadTable rt = new ReadTable();
+                Map<String, String> readTable = new LinkedHashMap<>();
+                readTable=rt.readTableValues("T1");
+                UpdateTable updateTable = new UpdateTable();
+                String result = updateTable.updateOrDelete("T2",readTable);
+*/
+              //System.out.println(result);
                 break;
         }
 
