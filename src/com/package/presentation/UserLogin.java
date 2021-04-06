@@ -41,15 +41,18 @@ public class UserLogin {
         Boolean result=false;
         UserLoginFlag ret = null;
         if(userName.isEmpty() || password.isEmpty()){
+            enterUserLog(userName,"USER_NULL");
             ret = ulf.USER_NULL;
         }
         else{
 
              result = AuthenticateUser(userName, password);
              if(result.equals(true)){
+                 enterUserLog(userName,"USER_VALID");
                  ret =  ulf.USER_VALID;
              }
              else{
+                 enterUserLog(userName,"USER_WRONGCREDENTIALS");
                  ret = ulf.USER_WRONGCREDENTIALS;
              }
         }
@@ -63,7 +66,7 @@ public class UserLogin {
         try
         {
 
-            BufferedReader br = new BufferedReader(new FileReader("src/com/package/tables/users.txt"));
+            BufferedReader br = new BufferedReader(new FileReader("src/com/package/TABLES/users.txt"));
             while ((line = br.readLine()) != null)
             {
                 if(line.equals("#USER")){
@@ -94,4 +97,19 @@ public class UserLogin {
         return new String(Base64.getMimeDecoder().decode(encryptedPassword));
     }
 
+    private void enterUserLog(String username, String response) {
+        try {
+            File file = new File("src/com/package/LOG/userlog.txt");
+            if (file.exists()) {
+                FileWriter fileWriter = new FileWriter(file, true);
+                if (fileWriter != null) {
+                    fileWriter.append(username+"\t"+response+"\t->LOGIN"+"\n");
+                }
+                fileWriter.flush();
+                fileWriter.close();
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+    }
 }

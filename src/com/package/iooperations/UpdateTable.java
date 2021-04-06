@@ -7,81 +7,48 @@ import java.util.Map;
 
 public class UpdateTable {
 
-/*
-    public String updateOrDelete(String tableName, Map<String, String> tableValues){
+
+    public String updateOrDelete(String tableName, Map<String, List<String>> tableValues, String location){
         String response = null;
 
-        try {
-            File file = new File("src/com/package/tables/"+tableName+".txt");
-            if(file.exists()){
-                FileWriter fileWriter = new FileWriter(file);
-                if(fileWriter!=null){
+        if(location.equalsIgnoreCase("local")){
+            try {
+                File file = new File("src/com/package/tables/"+tableName+".txt");
+                if(file.exists()){
+                    FileWriter fileWriter = new FileWriter(file);
+                    if(fileWriter!=null){
 
-                    fileWriter.append("#TABLE\n@database\n");
-                    fileWriter.append(tableValues.get("database"));
-                    fileWriter.append("\n@table\n");
-                    fileWriter.append(tableValues.get("table"));
-                    fileWriter.append("\n@column\n");
-                    fileWriter.append(tableValues.get("column"));
-                    fileWriter.append("\n@meta\n");
-                    fileWriter.append(tableValues.get("meta"));
-                    fileWriter.append("\n@value\n");
-                    fileWriter.append(tableValues.get("value"));
-                    response = "Database Created Successfully";
+                        fileWriter.append("#TABLE\n@database\n");
+                        fileWriter.append(tableValues.get("database").get(0));
+                        fileWriter.append("\n@table\n");
+                        fileWriter.append(tableValues.get("table").get(0));
+                        fileWriter.append("\n@column\n");
+                        fileWriter.append(getColumnNames(tableValues.get("column")));
+                        fileWriter.append("\n@meta\n");
+                        fileWriter.append(getColumnNames(tableValues.get("meta")));
+                        fileWriter.append("\n@value\n");
+                        fileWriter.append(getValue(tableValues.get("value"),tableValues.get("column")));
+                        response = "Values Changed Successfully";
+                    }
+                    else{
+                        response = "Data not inserted";
+                    }
+                    fileWriter.flush();
+                    fileWriter.close();
                 }
                 else{
-                    response = "Data not inserted";
+                    response = "Table doesn't exist";
                 }
-                fileWriter.flush();
-                fileWriter.close();
-            }
-            else{
-                response = "Table doesn't exist";
-            }
 
-        } catch (Exception e) {
-            e.printStackTrace();
+            } catch (Exception e) {
+                e.printStackTrace();
+            }
+        }
+        else{
+
         }
 
-        return response;
-    }
-*/
-
-    public String updateOrDelete(String tableName, Map<String, List<String>> tableValues){
-        String response = null;
-
-        try {
-            File file = new File("src/com/package/tables/"+tableName+".txt");
-            if(file.exists()){
-                FileWriter fileWriter = new FileWriter(file);
-                if(fileWriter!=null){
-
-                    fileWriter.append("#TABLE\n@database\n");
-                    fileWriter.append(tableValues.get("database").get(0));
-                    fileWriter.append("\n@table\n");
-                    fileWriter.append(tableValues.get("table").get(0));
-                    fileWriter.append("\n@column\n");
-                    fileWriter.append(getColumnNames(tableValues.get("column")));
-                    fileWriter.append("\n@meta\n");
-                    fileWriter.append(getColumnNames(tableValues.get("meta")));
-                    fileWriter.append("\n@value\n");
-                    fileWriter.append(getValue(tableValues.get("value"),tableValues.get("column")));
-                    response = "Values Changed Successfully";
-                }
-                else{
-                    response = "Data not inserted";
-                }
-                fileWriter.flush();
-                fileWriter.close();
-            }
-            else{
-                response = "Table doesn't exist";
-            }
-
-        } catch (Exception e) {
-            e.printStackTrace();
-        }
-
+        queryLog(tableValues,location,response);
         return response;
     }
 
@@ -112,6 +79,32 @@ public class UpdateTable {
         System.out.print(finalValue.toString());
         return finalValue.toString();
         }
+
+
+    private void queryLog( Map<String, List<String>> tableValues, String location,String response) {
+
+        String temp ="";
+       temp+=tableValues.get("database")+"\t";
+        temp+=tableValues.get("table")+"\t";
+        temp+=getColumnNames(tableValues.get("column"))+"\t";
+        temp+=getColumnNames(tableValues.get("meta"))+"\t";
+        temp+=getValue(tableValues.get("value"),tableValues.get("column"));
+
+
+        try {
+            File file = new File("src/com/package/LOG/querylog.txt");
+            if (file.exists()) {
+                FileWriter fileWriter = new FileWriter(file, true);
+                if (fileWriter != null) {
+                    fileWriter.append(temp+"\t"+location+"\t"+response+"\t->UPDATE TABLE"+"\n");
+                }
+                fileWriter.flush();
+                fileWriter.close();
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+    }
 
 
 }

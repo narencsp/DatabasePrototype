@@ -28,6 +28,24 @@ public class CreateDatabase {
         } catch (Exception e) {
             e.printStackTrace();
         }
+        queryLog(dbName, result);
         return result;
     }
+
+    private void queryLog(String dbName, String response) {
+        try {
+            File file = new File("src/com/package/LOG/querylog.txt");
+            if (file.exists()) {
+                FileWriter fileWriter = new FileWriter(file, true);
+                if (fileWriter != null) {
+                    fileWriter.append(dbName+"\t"+response+"\t->CREATE DATABASE"+"\n");
+                }
+                fileWriter.flush();
+                fileWriter.close();
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+    }
+
 }
