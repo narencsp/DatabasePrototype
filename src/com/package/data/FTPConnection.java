@@ -1,8 +1,6 @@
 package data;
 
-import java.io.IOException;
 import java.io.InputStream;
-
 import com.jcraft.jsch.*;
 
 public class FTPConnection {
@@ -10,9 +8,7 @@ public class FTPConnection {
     private final String pass;
     private String host = "timberlea.cs.dal.ca";
     private int port = 22;
-    private JSch jsch;
     private Session session;
-    private Channel channel;
     private ChannelSftp sftpChannel;
 
     public FTPConnection(String user, String pass) {
@@ -29,14 +25,14 @@ public class FTPConnection {
     }
 
     public void open() {
-        jsch = new JSch();
+        JSch jsch = new JSch();
         session = null;
         try {
             session = jsch.getSession(user, host, port);
             session.setConfig("StrictHostKeyChecking", "no");
             session.setPassword(pass);
             session.connect();
-            channel = session.openChannel("sftp");
+            Channel channel = session.openChannel("sftp");
             channel.connect();
             sftpChannel = (ChannelSftp) channel;
         } catch (JSchException e) {
