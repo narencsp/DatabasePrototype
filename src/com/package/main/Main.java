@@ -107,12 +107,12 @@ public class Main {
             switch (queryParser.type){
                 case CREATE:
                     CreateTable createTable = new CreateTable();
-                    String status = createTable.createTable(tokens.get("table").get(0),tokens.get("database").get(0),tokens.get("column_name"),tokens.get("column_type"));
-                    System.out.println(status);
+                    //String status = createTable.createTable(tokens.get("table").get(0),tokens.get("database").get(0),tokens.get("column_name"),tokens.get("column_type"));
+                 //   System.out.println(status);
                     break;
                 case DROP:
                     DeleteTable deleteTable = new DeleteTable();
-                    deleteTable.deleteTable(tokens.get("table").get(0));
+                   // deleteTable.deleteTable(tokens.get("table").get(0));
                     break;
                 case DELETE:
                     DeleteOperation deleteOperation = new DeleteOperation();

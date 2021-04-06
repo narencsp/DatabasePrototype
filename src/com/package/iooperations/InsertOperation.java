@@ -10,7 +10,7 @@ public class InsertOperation {
 
         Map<String,List<String>> map = new HashMap<>();
         ReadTable readTable = new ReadTable();
-        map = readTable.readTableValues(table);
+        //map = readTable.readTableValues(table);
 
         /*Map<String, List<String>> map = new HashMap<>();
 
@@ -70,7 +70,7 @@ public class InsertOperation {
         }
         if(!isError){
             WriteTable writeTable = new WriteTable();
-            writeTable.insertIntoTable(table,values);
+           // writeTable.insertIntoTable(table,values);
         }
     }
 

@@ -8,7 +8,7 @@ public class UpdateOperation {
 
         Map<String,List<String>> map = new HashMap<>();
         ReadTable readTable = new ReadTable();
-        map = readTable.readTableValues(table);
+        //map = readTable.readTableValues(table);
 
         /*Map<String, List<String>> map = new HashMap<>();
 
@@ -160,8 +160,8 @@ public class UpdateOperation {
         }
 
         UpdateTable updateTable = new UpdateTable();
-        String result = updateTable.updateOrDelete(map.get("table").get(0),map);
-        System.out.println(result);
+        //String result = updateTable.updateOrDelete(map.get("table").get(0),map);
+        //System.out.println(result);
     }
 
     private List<List<String>> getUpdatedList(List<List<String>> result_list, int columnNumberForUpdate, List<String> valueInQuery) {

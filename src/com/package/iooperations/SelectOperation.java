@@ -10,7 +10,7 @@ public class SelectOperation {
         //read data using tableName
         Map<String,List<String>> map = new HashMap<>();
         ReadTable readTable = new ReadTable();
-        map = readTable.readTableValues(tableName);
+        //map = readTable.readTableValues(tableName);
 
         /*Map<String, List<String>> map = new HashMap<>();
 

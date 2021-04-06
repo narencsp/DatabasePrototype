@@ -8,7 +8,7 @@ public class DeleteOperation {
 
         Map<String,List<String>> map = new HashMap<>();
         ReadTable readTable = new ReadTable();
-        map = readTable.readTableValues(table);
+        //map = readTable.readTableValues(table);
 
         /*Map<String, List<String>> map = new HashMap<>();
 
@@ -134,8 +134,8 @@ public class DeleteOperation {
         //write to table
         UpdateTable updateTable = new UpdateTable();
         System.out.println(map.get("table").get(0));
-        String result = updateTable.updateOrDelete(map.get("table").get(0),map);
-        System.out.println(result);
+        //String result = updateTable.updateOrDelete(map.get("table").get(0),map);
+        //System.out.println(result);
     }
 
     private List<String> getRowValuesToWriteInTable(List<List<String>> result_list) {
