@@ -1,11 +1,16 @@
 package iooperations;
 
+import java.io.IOException;
 import java.util.*;
 
 public class DeleteOperation {
-    public void deleteOperation(String table, List<String> conditions) {
+    public void deleteOperation(String table, List<String> conditions) throws IOException {
 
-        Map<String, List<String>> map = new HashMap<>();
+        Map<String,List<String>> map = new HashMap<>();
+        ReadTable readTable = new ReadTable();
+        map = readTable.readTableValues(table);
+
+        /*Map<String, List<String>> map = new HashMap<>();
 
         List<String> table_name_list = new ArrayList<>();
         table_name_list.add("T1");
@@ -36,7 +41,7 @@ public class DeleteOperation {
         value.add("kihan");
         value.add("pael");
         value.add("2335");
-        map.put("value", value);
+        map.put("value", value);*/
 
         List<String> column_names = map.get("column");
         int total_columns = column_names.size();
@@ -57,7 +62,7 @@ public class DeleteOperation {
                 int column_number = get_column_number(column_names, column_name);
                 System.out.println(column_name + "  " + column_number);
                 String column_type = meta.get(column_number);
-                if (column_type.equalsIgnoreCase("int") || column_type.equalsIgnoreCase("float")) {
+                if (column_type.contains("int") || column_type.contains("float")) {
                     //for(List<String> row : row_values){
                     for (int i = 0; i < row_values.size(); i++) {
                         List<String> row = row_values.get(i);
@@ -81,7 +86,7 @@ public class DeleteOperation {
                 String column_name = condition_divided.get(0);
                 int column_number = get_column_number(column_names, column_name);
                 String column_type = meta.get(column_number);
-                if (column_type.equalsIgnoreCase("int") || column_type.equalsIgnoreCase("float")) {
+                if (column_type.contains("int") || column_type.contains("float")) {
                     //for (List<String> row : row_values) {
                     for (int i = 0; i < row_values.size(); i++) {
                         List<String> row = row_values.get(i);
@@ -105,7 +110,7 @@ public class DeleteOperation {
                 String column_name = condition_divided.get(0);
                 int column_number = get_column_number(column_names, column_name);
                 String column_type = meta.get(column_number);
-                if (column_type.equalsIgnoreCase("int") || column_type.equalsIgnoreCase("float")) {
+                if (column_type.contains("int") || column_type.contains("float")) {
                     //for (List<String> row : row_values) {
                     for (int i = 0; i < row_values.size(); i++) {
                         List<String> row = row_values.get(i);
@@ -127,6 +132,10 @@ public class DeleteOperation {
         }
 
         //write to table
+        UpdateTable updateTable = new UpdateTable();
+        System.out.println(map.get("table").get(0));
+        String result = updateTable.updateOrDelete(map.get("table").get(0),map);
+        System.out.println(result);
     }
 
     private List<String> getRowValuesToWriteInTable(List<List<String>> result_list) {

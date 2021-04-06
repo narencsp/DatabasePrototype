@@ -1,11 +1,16 @@
 package iooperations;
 
+import java.io.IOException;
 import java.util.*;
 
 public class UpdateOperation {
-    public void updateOperation(String table, List<String> columnInQuery, List<String> valueInQuery, List<String> conditionFromQuery){
+    public void updateOperation(String table, List<String> columnInQuery, List<String> valueInQuery, List<String> conditionFromQuery) throws IOException {
 
-        Map<String, List<String>> map = new HashMap<>();
+        Map<String,List<String>> map = new HashMap<>();
+        ReadTable readTable = new ReadTable();
+        map = readTable.readTableValues(table);
+
+        /*Map<String, List<String>> map = new HashMap<>();
 
         List<String> table_name_list = new ArrayList<>();
         table_name_list.add("T1");
@@ -36,7 +41,7 @@ public class UpdateOperation {
         value.add("kihan");
         value.add("pael");
         value.add("2335");
-        map.put("value", value);
+        map.put("value", value);*/
 
         List<String> column_names = map.get("column");
         int total_columns = column_names.size();
@@ -76,20 +81,23 @@ public class UpdateOperation {
                 int column_number = get_column_number(column_names, column_name);
                 System.out.println(column_name + "  " + column_number);
                 String column_type = meta.get(column_number);
-                if (column_type.equalsIgnoreCase("int") || column_type.equalsIgnoreCase("float")) {
+                if (column_type.contains("int") || column_type.contains("float")) {
 
                     for (int i = 0; i < row_values.size(); i++) {
                         List<String> row = row_values.get(i);
                         int columnValueInt = Integer.parseInt(row.get(column_number));
                         if (columnValueInt > Integer.parseInt(condition_divided.get(1))) {
+                            List<List<String>> finalResultList = new ArrayList<>();
+                            finalResultList.add(row);
+                            finalResultList = getUpdatedList(finalResultList,columnNumberForUpdate,valueInQuery);
+                            result_list.add(finalResultList.get(0));
+                        } else {
                             result_list.add(row);
                         }
                     }
-                    List<List<String>> finalResultList = new ArrayList<>();
-                    finalResultList = getUpdatedList(result_list,columnNumberForUpdate,valueInQuery);
-                    print_list(finalResultList);
+
                     List<String> result_values = new ArrayList<>();
-                    result_values = getRowValuesToWriteInTable(finalResultList);
+                    result_values = getRowValuesToWriteInTable(result_list);
                     map.replace("value", result_values);
                 } else {
                     System.out.println("Can not use > with string value");
@@ -100,19 +108,24 @@ public class UpdateOperation {
                 String column_name = condition_divided.get(0);
                 int column_number = get_column_number(column_names, column_name);
                 String column_type = meta.get(column_number);
-                if (column_type.equalsIgnoreCase("int") || column_type.equalsIgnoreCase("float")) {
+                if (column_type.contains("int") || column_type.contains("float")) {
                     for (int i = 0; i < row_values.size(); i++) {
                         List<String> row = row_values.get(i);
                         int columnValueInt = Integer.parseInt(row.get(column_number));
                         if (columnValueInt < Integer.parseInt(condition_divided.get(1))) {
+                            List<List<String>> finalResultList = new ArrayList<>();
+                            finalResultList.add(row);
+                            finalResultList = getUpdatedList(finalResultList,columnNumberForUpdate,valueInQuery);
+                            result_list.add(finalResultList.get(0));
+                        }else{
                             result_list.add(row);
                         }
                     }
-                    List<List<String>> finalResultList = new ArrayList<>();
-                    finalResultList = getUpdatedList(result_list,columnNumberForUpdate,valueInQuery);
-                    print_list(finalResultList);
+
+                    //print_list(finalResultList);
+
                     List<String> result_values = new ArrayList<>();
-                    result_values = getRowValuesToWriteInTable(finalResultList);
+                    result_values = getRowValuesToWriteInTable(result_list);
                     map.replace("value", result_values);
                 } else {
                     System.out.println("Can not use < with string value");
@@ -123,25 +136,32 @@ public class UpdateOperation {
                 String column_name = condition_divided.get(0);
                 int column_number = get_column_number(column_names, column_name);
                 String column_type = meta.get(column_number);
-                if (column_type.equalsIgnoreCase("int") || column_type.equalsIgnoreCase("float")) {
+                if (column_type.contains("int") || column_type.contains("float")) {
                     for (int i = 0; i < row_values.size(); i++) {
                         List<String> row = row_values.get(i);
                         int columnValueInt = Integer.parseInt(row.get(column_number));
                         if (columnValueInt == Integer.parseInt(condition_divided.get(1))) {
+                            List<List<String>> finalResultList = new ArrayList<>();
+                            finalResultList.add(row);
+                            finalResultList = getUpdatedList(finalResultList,columnNumberForUpdate,valueInQuery);
+                            result_list.add(finalResultList.get(0));
+                        }else{
                             result_list.add(row);
                         }
                     }
-                    List<List<String>> finalResultList = new ArrayList<>();
-                    finalResultList = getUpdatedList(result_list,columnNumberForUpdate,valueInQuery);
-                    print_list(finalResultList);
+
                     List<String> result_values = new ArrayList<>();
-                    result_values = getRowValuesToWriteInTable(finalResultList);
+                    result_values = getRowValuesToWriteInTable(result_list);
                     map.replace("value", result_values);
                 } else {
                     System.out.println("Can not use = with string value");
                 }
             }
         }
+
+        UpdateTable updateTable = new UpdateTable();
+        String result = updateTable.updateOrDelete(map.get("table").get(0),map);
+        System.out.println(result);
     }
 
     private List<List<String>> getUpdatedList(List<List<String>> result_list, int columnNumberForUpdate, List<String> valueInQuery) {

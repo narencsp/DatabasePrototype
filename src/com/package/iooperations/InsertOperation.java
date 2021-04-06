@@ -8,7 +8,11 @@ import java.util.Map;
 public class InsertOperation {
     public void checkInsertValues(String table, List<String> values) throws Exception {
 
-        Map<String, List<String>> map = new HashMap<>();
+        Map<String,List<String>> map = new HashMap<>();
+        ReadTable readTable = new ReadTable();
+        map = readTable.readTableValues(table);
+
+        /*Map<String, List<String>> map = new HashMap<>();
 
         List<String> table_name_list = new ArrayList<>();
         table_name_list.add("T1");
@@ -39,8 +43,7 @@ public class InsertOperation {
         value.add("kihan");
         value.add("pael");
         value.add("2335");
-        map.put("value", value);
-
+        map.put("value", value);*/
 
         int indexOfPrimaryKey = getIndexOfPrimaryKey(map.get("meta"));
         String valueToCompare = values.get(indexOfPrimaryKey);

@@ -107,7 +107,8 @@ public class Main {
             switch (queryParser.type){
                 case CREATE:
                     CreateTable createTable = new CreateTable();
-                    createTable.createTable(tokens.get("table").get(0),tokens.get("database").get(0),tokens.get("column_name"),tokens.get("column_type"));
+                    String status = createTable.createTable(tokens.get("table").get(0),tokens.get("database").get(0),tokens.get("column_name"),tokens.get("column_type"));
+                    System.out.println(status);
                     break;
                 case DROP:
                     DeleteTable deleteTable = new DeleteTable();
@@ -128,7 +129,12 @@ public class Main {
                     break;
                 case SELECT:
                     SelectOperation selectOperation = new SelectOperation();
-                    selectOperation.selectQueryOperation(tokens.get("table").get(0),tokens.get("columns"),tokens.get("condition"));
+                    if(tokens.containsKey("condition")) {
+                        selectOperation.selectQueryOperation(tokens.get("table").get(0), tokens.get("columns"), tokens.get("condition"));
+                    }else{
+                        List<String> blank_list = new ArrayList<>();
+                        selectOperation.selectQueryOperation(tokens.get("table").get(0), tokens.get("columns"), blank_list);
+                    }
                     break;
                 case UPDATE:
                     UpdateOperation updateOperation = new UpdateOperation();
