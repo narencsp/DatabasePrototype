@@ -4,7 +4,7 @@ import java.io.IOException;
 import java.util.*;
 
 public class DeleteOperation {
-    public void deleteOperation(String table, List<String> conditions) throws IOException {
+    public void deleteOperation(String table, String database, String location, List<String> conditions) throws IOException {
 
         Map<String,List<String>> map = new HashMap<>();
         ReadTable readTable = new ReadTable();

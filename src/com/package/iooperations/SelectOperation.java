@@ -5,7 +5,7 @@ import java.util.*;
 
 public class SelectOperation {
 
-    public void selectQueryOperation(String tableName, List<String> columns_to_print, List<String> conditions) throws IOException {
+    public void selectQueryOperation(String tableName, String database, String location, List<String> columns_to_print, List<String> conditions) throws IOException {
 
         //read data using tableName
         Map<String,List<String>> map = new HashMap<>();

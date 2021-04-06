@@ -43,9 +43,20 @@ public class Insert implements Query {
     @Override
     public Map<String, List<String>> getTokens() {
         Map<String, List<String>> tokens = new HashMap<>();
-        List<String> table_name_list = new ArrayList<>();
-        table_name_list.add(table_name);
-        tokens.put("table", table_name_list);
+
+        List<String> table_name_list = Arrays.asList(table_name.split("\\."));
+        //table_name_list.add(table_name);
+        List<String> table_name_temp_list = new ArrayList<>();
+        table_name_temp_list.add(table_name_list.get(2));
+        tokens.put("table", table_name_temp_list);
+        List<String> db_temp_list = new ArrayList<>();
+        db_temp_list.add(table_name_list.get(1));
+        tokens.put("database", db_temp_list);
+        List<String> location_list = new ArrayList<>();
+        location_list.add(table_name_list.get(0));
+        tokens.put("location", location_list);
+
+
         tokens.put("columns", table_columns_list);
         tokens.put("values", values_list);
         return tokens;
