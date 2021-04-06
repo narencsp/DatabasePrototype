@@ -6,7 +6,7 @@ import java.util.List;
 import java.util.Map;
 
 public class InsertOperation {
-    public void checkInsertValues(String table, List<String> values) throws Exception {
+    public void checkInsertValues(String table, String database, String location, List<String> values) throws Exception {
 
         Map<String,List<String>> map = new HashMap<>();
         ReadTable readTable = new ReadTable();

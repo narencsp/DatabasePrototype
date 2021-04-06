@@ -4,7 +4,7 @@ import java.io.*;
 
 public class DeleteTable {
     String result=null;
-    public String deleteTable(String tableToDelete){
+    public String deleteTable(String tableToDelete, String database, String location){
         try
         {
             File file = new File("src/com/package/tables/"+tableToDelete+".txt");

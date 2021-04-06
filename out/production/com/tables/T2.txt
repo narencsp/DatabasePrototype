@@ -2,7 +2,7 @@
 @database
 D1
 @table
-T1
+T2
 @column
 Name~Age~Gender~Address
 @meta
@@ -11,7 +11,6 @@ varchar[20]PK~int[10]~varchar[10]~varchar[50]
 Joe~15~Male~France
 Eve~20~Female~Canada
 Suosa~35~Female~India
-Kp~22~Male~India
+Kp~22~Male~Canda
 tom~67~Male~Canada
 hank~76~Male~Canada
-peter~78~Male~Canada

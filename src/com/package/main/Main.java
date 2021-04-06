@@ -103,48 +103,59 @@ public class Main {
         query = in.nextLine();
         QueryParser queryParser = new QueryParser();
         if(queryParser.getQueryDetails(query)){
-            Map<String, List<String>> tokens = queryParser.get_tokens();
+            Map<String, List<String>> tokens = new HashMap<>();
+            if(!queryParser.type.toString().equals("ERD")) {
+                tokens = queryParser.get_tokens();
+            }
             switch (queryParser.type){
                 case CREATE:
                     CreateTable createTable = new CreateTable();
-                    String status = createTable.createTable(tokens.get("table").get(0),tokens.get("database").get(0),tokens.get("column_name"),tokens.get("column_type"));
-                    System.out.println(status);
+                    if(tokens.containsKey("foreign_key")) {
+                        String status = createTable.createTable(tokens.get("table").get(0), tokens.get("database").get(0), tokens.get("location").get(0), tokens.get("column_name"), tokens.get("column_type"), tokens.get("foreign_key"));
+                        System.out.println(status);
+                    }else{
+                        List<String> blank_list = new ArrayList<>();
+                        String status = createTable.createTable(tokens.get("table").get(0), tokens.get("database").get(0), tokens.get("location").get(0), tokens.get("column_name"), tokens.get("column_type"),blank_list);
+                        System.out.println(status);
+                    }
                     break;
                 case DROP:
                     DeleteTable deleteTable = new DeleteTable();
-                    deleteTable.deleteTable(tokens.get("table").get(0));
+                    deleteTable.deleteTable(tokens.get("table").get(0), tokens.get("database").get(0), tokens.get("location").get(0));
                     break;
                 case DELETE:
                     DeleteOperation deleteOperation = new DeleteOperation();
                     if(tokens.containsKey("values")) {
-                        deleteOperation.deleteOperation(tokens.get("table").get(0), tokens.get("values"));
+                        deleteOperation.deleteOperation(tokens.get("table").get(0), tokens.get("database").get(0), tokens.get("location").get(0), tokens.get("values"));
                     }else{
                         List<String> blank_list = new ArrayList<>();
-                        deleteOperation.deleteOperation(tokens.get("table").get(0), blank_list);
+                        deleteOperation.deleteOperation(tokens.get("table").get(0), tokens.get("database").get(0), tokens.get("location").get(0), blank_list);
                     }
                     break;
                 case INSERT:
                     InsertOperation writeTable = new InsertOperation();
-                    writeTable.checkInsertValues(tokens.get("table").get(0),tokens.get("values"));
+                    writeTable.checkInsertValues(tokens.get("table").get(0), tokens.get("database").get(0), tokens.get("location").get(0),tokens.get("values"));
                     break;
                 case SELECT:
                     SelectOperation selectOperation = new SelectOperation();
                     if(tokens.containsKey("condition")) {
-                        selectOperation.selectQueryOperation(tokens.get("table").get(0), tokens.get("columns"), tokens.get("condition"));
+                        selectOperation.selectQueryOperation(tokens.get("table").get(0), tokens.get("database").get(0), tokens.get("location").get(0), tokens.get("columns"), tokens.get("condition"));
                     }else{
                         List<String> blank_list = new ArrayList<>();
-                        selectOperation.selectQueryOperation(tokens.get("table").get(0), tokens.get("columns"), blank_list);
+                        selectOperation.selectQueryOperation(tokens.get("table").get(0), tokens.get("database").get(0), tokens.get("location").get(0), tokens.get("columns"), blank_list);
                     }
                     break;
                 case UPDATE:
                     UpdateOperation updateOperation = new UpdateOperation();
                     if(tokens.containsKey("condition")) {
-                        updateOperation.updateOperation(tokens.get("table").get(0), tokens.get("columns"), tokens.get("values"), tokens.get("condition"));
+                        updateOperation.updateOperation(tokens.get("table").get(0), tokens.get("database").get(0), tokens.get("location").get(0), tokens.get("columns"), tokens.get("values"), tokens.get("condition"));
                     }else{
                         List<String> blank_list = new ArrayList<>();
-                        updateOperation.updateOperation(tokens.get("table").get(0), tokens.get("columns"), tokens.get("values"), blank_list);
+                        updateOperation.updateOperation(tokens.get("table").get(0), tokens.get("database").get(0), tokens.get("location").get(0), tokens.get("columns"), tokens.get("values"), blank_list);
                     }
                     break;
+                case ERD:
+                    System.out.println("ERD will be here!");
                 default:
                     System.out.println("Something went wrong!");
                     break;
