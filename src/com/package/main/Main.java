@@ -113,11 +113,6 @@ public class Main {
 
                     //String status = createTable.createTable(tokens.get("table").get(0),tokens.get("database").get(0),tokens.get("column_name"),tokens.get("column_type"));
                  //   System.out.println(status);
-                    break;
-                case DROP:
-                    DeleteTable deleteTable = new DeleteTable();
-                   // deleteTable.deleteTable(tokens.get("table").get(0));
-
                     if(tokens.containsKey("foreign_key")) {
                         String status = createTable.createTable(tokens.get("table").get(0), tokens.get("database").get(0), tokens.get("location").get(0), tokens.get("column_name"), tokens.get("column_type"), tokens.get("foreign_key"));
                         System.out.println(status);

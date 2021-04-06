@@ -5,49 +5,34 @@ import java.io.*;
 public class DeleteTable {
     String result=null;
 
-    public String deleteTable(String tableToDelete, String location){
+    public String deleteTable(String tableToDelete, String database, String location) {
 
-        if(location.equalsIgnoreCase("local")){
-            try
-            {
-                File file = new File("src/com/package/tables/"+tableToDelete+".txt");
-                if(file.exists()){
-                    boolean success = (new File("src/com/package/tables/"+tableToDelete)).delete();
+        if (location.equalsIgnoreCase("local")) {
+
+            try {
+                File file = new File("src/com/package/tables/" + tableToDelete + ".txt");
+                if (file.exists()) {
+                    boolean success = (new File("src/com/package/tables/" + tableToDelete)).delete();
 
                     if (success) {
-                        result="Table deleted successfully";
-                    }
-                    else{
-                        result = "Table not deleted";
-                    }
+                        result = "Table deleted successfully";
 
-    public String deleteTable(String tableToDelete, String database, String location){
-        try
-        {
-            File file = new File("src/com/package/tables/"+tableToDelete+".txt");
-            if(file.exists()){
-                boolean success = (new File("src/com/package/tables/"+tableToDelete)).delete();
+                    } else {
 
-                if (success) {
-                    result="Table deleted successfully";
+                        result = "Table doesn't exist";
+                    }
 
                 }
-                else{
-
-                    result = "Table doesn't exist";
-                }
-
-            }
-            catch (Exception e)
-            {
+            } catch (Exception e) {
                 e.printStackTrace();
             }
+            queryLog(tableToDelete, location, result);
         }
         else{
 
         }
-        queryLog(tableToDelete,location,result);
         return result;
+
     }
 
     private void queryLog(String tableName, String location, String response) {
