@@ -10,30 +10,33 @@ public class TableLock {
 
     public void isTableLocked(String tableName) throws Exception{
         String line = "";
+        String response = null;
         BufferedReader bufferedReader = new BufferedReader(new FileReader("src/com/package/TABLES/lock.txt"));
         FileWriter fileWriter=null;
-        while ((line = bufferedReader.readLine()) != null)
-        {
-            if(line.contains(tableName)){
-                System.out.println("The table is currently being accessed by another user, please wait!");
-                Thread.sleep(8000);
-                fileWriter = new FileWriter(new File("src/com/package/TABLES/lock.txt"));
-                if (fileWriter != null) {
-                    fileWriter.append(tableName);
+
+
+
+                if(line.contains(tableName)){
+                    System.out.println("The table is currently being accessed by another user, please wait!");
+                    Thread.sleep(10000);
+                    fileWriter = new FileWriter(new File("src/com/package/TABLES/lock.txt"));
+                    if (fileWriter != null) {
+                        fileWriter.append(tableName+"\n");
+                    }
                 }
-            }
-            else{
-                fileWriter = new FileWriter(new File("src/com/package/TABLES/lock.txt"));
-                if (fileWriter != null) {
-                    fileWriter.append(tableName);
+                else{
+                    fileWriter = new FileWriter(new File("src/com/package/TABLES/lock.txt"));
+                    if (fileWriter != null) {
+                        fileWriter.append(tableName+"\n");
+                    }
                 }
-            }
-        }
+
+
+
 
         fileWriter.flush();
         fileWriter.close();
         queryLog(tableName);
-       // clearLock(tableName);
     }
 
 

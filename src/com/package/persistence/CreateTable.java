@@ -1,5 +1,7 @@
 package persistence;
 
+import business.TableLock;
+
 import java.io.*;
 import java.util.List;
 
@@ -7,6 +9,7 @@ public class CreateTable {
 
 
     public String createTable(String tablename, String dbName, String location, List<String> columnNames, List<String> columnType, List<String> foreignKey) throws Exception {
+
 
         String result = null;
         int temp=1;
@@ -31,76 +34,60 @@ public class CreateTable {
             try
             {
 
-                    if(!file.exists()){
-                        FileWriter  fileWriter = new FileWriter("src/com/package/DATABASE/"+dbName+".txt",true);
-                        if(fileWriter!=null){
-                            fileWriter.append("\n");
-                            fileWriter.append(tablename);
-                            fileWriter.flush();
-                            fileWriter.close();
-                            fileWriter = new FileWriter("src/com/package/TABLES/"+tablename+".txt");
-                            if(fileWriter!=null){
-                                fileWriter.append("#TABLE\n@database\n"+dbName+"\n@table\n"+tablename+"\n@column\n");
-                                for(String column : columnNames){
-                                    if(temp==(columnNames.size())){
-                                        fileWriter.append(column);
-                                    }
-                                    else{
-                                        fileWriter.append(column+"~");
-                                    }
-
-                                    temp++;
+                if (!file.exists()) {
+                    FileWriter fileWriter = new FileWriter("src/com/package/DATABASE/" + dbName + ".txt", true);
+                    if (fileWriter != null) {
+                        fileWriter.append("\n");
+                        fileWriter.append(tablename);
+                        fileWriter.flush();
+                        fileWriter.close();
+                        fileWriter = new FileWriter(file);
+                        if (fileWriter != null) {
+                            fileWriter.append("#TABLE\n@database\n" + dbName + "\n@table\n" + tablename + "\n@column\n");
+                            for (String column : columnNames) {
+                                if (temp == (columnNames.size())) {
+                                    fileWriter.append(column);
+                                } else {
+                                    fileWriter.append(column + "~");
                                 }
-                                temp=1;
-                                fileWriter.append("\n"+"@meta\n");
-                                for(String column : columnType){
-                                    if(temp==(columnType.size())){
-                                        fileWriter.append(column);
-                                    }
-                                    else{
-                                        fileWriter.append(column+"~");
-                                    }
 
-                                    temp++;
+                                temp++;
+                            }
+                            temp = 1;
+                            fileWriter.append("\n" + "@meta\n");
+                            for (String column : columnType) {
+                                if (temp == (columnType.size())) {
+                                    fileWriter.append(column);
+                                } else {
+                                    fileWriter.append(column + "~");
                                 }
-                                fileWriter.append("\n"+"@value");
-                                result = "Inserted Successfully";
-                            }
-                            else{
-                                result = "Error in table";
-                            }
 
-                            temp++;
-                        }
-                        temp = 1;
-                        fileWriter.append("\n" + "@meta\n");
-                        for (String column : columnType) {
-                            if (temp == (columnType.size())) {
-                                fileWriter.append(column);
-                            } else {
-                                fileWriter.append(column + "~");
+                                temp++;
                             }
-
-                            temp++;
+                            fileWriter.append("\n" + "@value");
+                            result = "Inserted Successfully";
+                        } else {
+                            result = "Error in table";
                         }
-                        fileWriter.append("\n" + "@value");
-                        result = "Inserted Successfully";
                     } else {
-                        result = "Error in table";
+                        result = "Error in database table";
                     }
+                    fileWriter.flush();
+                    fileWriter.close();
 
-
-                enterForeignKeyDetails(foreignKey);
-                MasterRecord masterRecord = new MasterRecord();
-                masterRecord.writeMasterRecord(tablename, location);
-            } else {
-                result = "Table already exists";
+                    enterForeignKeyDetails(foreignKey);
+                    MasterRecord masterRecord = new MasterRecord();
+                    masterRecord.writeMasterRecord(tablename, location);
+                } else {
+                    result = "Table already exists";
+                }
             }
-            catch (IOException e)
+            catch (Exception e)
             {
                 e.printStackTrace();
             }
             queryLog(tablename,dbName,columnNames,columnType,location,result, foreignKey);
+
 
 
         return result;

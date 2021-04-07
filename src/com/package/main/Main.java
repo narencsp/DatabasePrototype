@@ -44,8 +44,7 @@ public class Main {
                 break;
             case 4:
 
-                TableLock tableLock = new TableLock();
-                tableLock.isTableLocked("T1");
+
                 //System.out.println(result);
                 break;
         }

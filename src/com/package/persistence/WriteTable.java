@@ -1,5 +1,7 @@
 package persistence;
 
+import business.TableLock;
+
 import java.io.File;
 import java.io.FileWriter;
 import java.util.List;
@@ -9,6 +11,8 @@ public class WriteTable {
     public String insertIntoTable(String tableName,String databaseName, String location , List<String> columnValues) throws Exception {
         int temp = 1;
         String response = null;
+        TableLock tableLock = new TableLock();
+        tableLock.isTableLocked(tableName);
         File file = new File("src/com/package/DATABASE/" + databaseName + ".txt");
 
         if (location.equalsIgnoreCase("local")) {
@@ -49,7 +53,7 @@ public class WriteTable {
             response = "Table doesn't exist";
         }
         queryLog(tableName, columnValues, location, response);
-
+        tableLock.clearLock(tableName);
         return response;
     }
 
