@@ -1,6 +1,7 @@
 package main;
 
 import business.*;
+import com.google.common.collect.Table;
 import persistence.*;
 import presentation.Create;
 import presentation.QueryParser;

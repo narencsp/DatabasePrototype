@@ -1,5 +1,7 @@
 package persistence;
 
+import business.TableLock;
+
 import java.io.File;
 import java.io.FileWriter;
 import java.util.List;
@@ -8,9 +10,12 @@ import java.util.Map;
 public class UpdateTable {
 
 
-    public String updateOrDelete(String tableName, String databaseName , String location, Map<String, List<String>> tableValues) {
+    public String updateOrDelete(String tableName, String databaseName , String location, Map<String, List<String>> tableValues) throws Exception {
         String response = null;
 
+
+        TableLock tableLock = new TableLock();
+        tableLock.isTableLocked(tableName);
         File file = new File("src/com/package/DATABASE/" + databaseName + ".txt");
 
         if (location.equalsIgnoreCase("local")) {
@@ -55,7 +60,7 @@ public class UpdateTable {
             e.printStackTrace();
         }
         queryLog(tableValues, location, response);
-
+        tableLock.clearLock(tableName);
 
         return response;
     }

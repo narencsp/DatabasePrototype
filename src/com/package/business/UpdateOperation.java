@@ -7,7 +7,7 @@ import java.io.IOException;
 import java.util.*;
 
 public class UpdateOperation {
-    public void updateOperation(String table, String database, String location, List<String> columnInQuery, List<String> valueInQuery, List<String> conditionFromQuery) throws IOException {
+    public void updateOperation(String table, String database, String location, List<String> columnInQuery, List<String> valueInQuery, List<String> conditionFromQuery) throws Exception {
 
         Map<String,List<String>> map = new HashMap<>();
         ReadTable readTable = new ReadTable();

@@ -1,5 +1,7 @@
 package persistence;
 
+import business.TableLock;
+
 import java.io.*;
 import java.util.ArrayList;
 import java.util.List;
@@ -7,8 +9,10 @@ import java.util.List;
 public class DeleteTable {
     String result = null;
 
-    public String deleteTable(String tableToDelete, String database, String location) {
+    public String deleteTable(String tableToDelete, String database, String location) throws Exception {
 
+        TableLock tableLock = new TableLock();
+        tableLock.isTableLocked(tableToDelete);
         File file = new File("src/com/package/DATABASE/" + database + ".txt");
 
         if (location.equalsIgnoreCase("local")) {
@@ -44,7 +48,7 @@ public class DeleteTable {
             e.printStackTrace();
         }
         queryLog(database, tableToDelete, location, result);
-
+        tableLock.clearLock(tableToDelete);
         return result;
 
     }
