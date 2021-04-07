@@ -9,41 +9,65 @@ public class CreateTable {
     public String createTable(String tablename, String dbName, String location, List<String> columnNames, List<String> columnType, List<String> foreignKey) throws Exception {
 
         String result = null;
-        int temp = 1;
-        File file = new File("src/com/package/DATABASE/" + dbName + ".txt");
-
-        if (location.equalsIgnoreCase("local")) {
+        int temp=1;
+        File file = new File("src/com/package/DATABASE/"+dbName+".txt");;
+        if(location.equalsIgnoreCase("local")) {
 
             if (file.exists()) { //check if database file exists
                 file = new File("src/com/package/TABLES/local/" + tablename + ".txt");
-            } else {
-                result = "Database table not found";
             }
-        } else {
-            if (file.exists()) { //check if database file exists
-                file = new File("src/com/package/TABLES/remote/" + tablename + ".txt");
-            } else {
+            else{
                 result = "Database table not found";
             }
         }
+            else{
+                if(file.exists()) { //check if database file exists
+                    file = new File("src/com/package/TABLES/remote/" + tablename + ".txt");
+                }
+                else {
+                    result = "Database table not found";
+                }
+            }
+            try
+            {
 
-        try {
+                    if(!file.exists()){
+                        FileWriter  fileWriter = new FileWriter("src/com/package/DATABASE/"+dbName+".txt",true);
+                        if(fileWriter!=null){
+                            fileWriter.append("\n");
+                            fileWriter.append(tablename);
+                            fileWriter.flush();
+                            fileWriter.close();
+                            fileWriter = new FileWriter("src/com/package/TABLES/"+tablename+".txt");
+                            if(fileWriter!=null){
+                                fileWriter.append("#TABLE\n@database\n"+dbName+"\n@table\n"+tablename+"\n@column\n");
+                                for(String column : columnNames){
+                                    if(temp==(columnNames.size())){
+                                        fileWriter.append(column);
+                                    }
+                                    else{
+                                        fileWriter.append(column+"~");
+                                    }
 
-            if (!file.exists()) {
-                FileWriter fileWriter = new FileWriter("src/com/package/DATABASE/" + dbName + ".txt", true);
-                if (fileWriter != null) {
-                    fileWriter.append("\n");
-                    fileWriter.append(tablename);
-                    fileWriter.flush();
-                    fileWriter.close();
-                    fileWriter = new FileWriter("src/com/package/TABLES/" + tablename + ".txt");
-                    if (fileWriter != null) {
-                        fileWriter.append("#TABLE\n@database\n" + dbName + "\n@table\n" + tablename + "\n@column\n");
-                        for (String column : columnNames) {
-                            if (temp == (columnNames.size())) {
-                                fileWriter.append(column);
-                            } else {
-                                fileWriter.append(column + "~");
+                                    temp++;
+                                }
+                                temp=1;
+                                fileWriter.append("\n"+"@meta\n");
+                                for(String column : columnType){
+                                    if(temp==(columnType.size())){
+                                        fileWriter.append(column);
+                                    }
+                                    else{
+                                        fileWriter.append(column+"~");
+                                    }
+
+                                    temp++;
+                                }
+                                fileWriter.append("\n"+"@value");
+                                result = "Inserted Successfully";
+                            }
+                            else{
+                                result = "Error in table";
                             }
 
                             temp++;
@@ -64,11 +88,7 @@ public class CreateTable {
                     } else {
                         result = "Error in table";
                     }
-                } else {
-                    result = "Error in database table";
-                }
-                fileWriter.flush();
-                fileWriter.close();
+
 
                 enterForeignKeyDetails(foreignKey);
                 MasterRecord masterRecord = new MasterRecord();
@@ -76,12 +96,11 @@ public class CreateTable {
             } else {
                 result = "Table already exists";
             }
-
-
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
-        queryLog(tablename, dbName, columnNames, columnType, location, result, foreignKey);
+            catch (IOException e)
+            {
+                e.printStackTrace();
+            }
+            queryLog(tablename,dbName,columnNames,columnType,location,result, foreignKey);
 
 
         return result;
