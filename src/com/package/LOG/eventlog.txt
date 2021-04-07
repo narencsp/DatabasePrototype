@@ -6,3 +6,6 @@ remote	T10	Table Deleted		->###MASTER RECORD UPDATED
 T10	remote	Table Deleted		->###MASTER RECORD UPDATED
 kp1	Database Created Successfully	->CREATE DATABASE
 kp2	Database Created Successfully	->CREATE DATABASE
+kp1	Database Created Successfully	->CREATE DATABASE
+student	local	Table Added		->###MASTER RECORD UPDATED
+kp1	local	student	id~name~address~phoneNumber~	intPK~varchar(100)~varchar(100)~int~		[intPK, varchar(100), varchar(100), int]	Inserted Successfully	->Create Table
