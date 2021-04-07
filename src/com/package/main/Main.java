@@ -12,6 +12,7 @@ import java.util.*;
 
 public class Main {
     static Scanner in;
+
     public static void main(String[] args) throws Exception {
         displayInitial();
     }
@@ -20,19 +21,19 @@ public class Main {
         Scanner in = new Scanner(System.in);
         System.out.println("1. User Creation\n2. User Login");
         int choice = in.nextInt();
-        UserLogin ul= new UserLogin();
+        UserLogin ul = new UserLogin();
         UserCreation uc = new UserCreation();
-        switch(choice){
+        switch (choice) {
             case 1:
                 uc.createUser();
                 displayInitial();
                 break;
             case 2:
                 ul.getUsername();
-                if(ul.ulf.equals(UserLogin.UserLoginFlag.USER_VALID)){
+                if (ul.ulf.equals(UserLogin.UserLoginFlag.USER_VALID)) {
                     System.out.println("Session started");
                     startQuerySession();
-                }else {
+                } else {
                     displayInitial();
                 }
                 break;
@@ -43,35 +44,36 @@ public class Main {
             case 4:
 
 
-              //System.out.println(result);
+                //System.out.println(result);
                 break;
         }
 
     }
 
-    private static  void startQuerySession() throws Exception {
+    private static void startQuerySession() throws Exception {
         String query = "";
         System.out.println("Enter Query:");
         Scanner in = new Scanner(System.in);
         query = in.nextLine();
         QueryParser queryParser = new QueryParser();
-        if(queryParser.getQueryDetails(query)){
+        if (queryParser.getQueryDetails(query)) {
             Map<String, List<String>> tokens = new HashMap<>();
-            if(!queryParser.type.toString().equals("ERD")) {
+            System.out.println(queryParser.type.toString());
+            if (!queryParser.type.toString().equals("ERD") && !queryParser.type.toString().equals("DUMP")) {
                 tokens = queryParser.get_tokens();
             }
-            switch (queryParser.type){
+            switch (queryParser.type) {
                 case CREATE:
                     CreateTable createTable = new CreateTable();
 
                     //String status = createTable.createTable(tokens.get("table").get(0),tokens.get("database").get(0),tokens.get("column_name"),tokens.get("column_type"));
-                 //   System.out.println(status);
-                    if(tokens.containsKey("foreign_key")) {
+                    //   System.out.println(status);
+                    if (tokens.containsKey("foreign_key")) {
                         String status = createTable.createTable(tokens.get("table").get(0), tokens.get("database").get(0), tokens.get("location").get(0), tokens.get("column_name"), tokens.get("column_type"), tokens.get("foreign_key"));
                         System.out.println(status);
-                    }else{
+                    } else {
                         List<String> blank_list = new ArrayList<>();
-                        String status = createTable.createTable(tokens.get("table").get(0), tokens.get("database").get(0), tokens.get("location").get(0), tokens.get("column_name"), tokens.get("column_type"),blank_list);
+                        String status = createTable.createTable(tokens.get("table").get(0), tokens.get("database").get(0), tokens.get("location").get(0), tokens.get("column_name"), tokens.get("column_type"), blank_list);
                         System.out.println(status);
                     }
                     break;
@@ -82,50 +84,50 @@ public class Main {
                     break;
                 case DELETE:
                     DeleteOperation deleteOperation = new DeleteOperation();
-                    if(tokens.containsKey("values")) {
+                    if (tokens.containsKey("values")) {
                         deleteOperation.deleteOperation(tokens.get("table").get(0), tokens.get("database").get(0), tokens.get("location").get(0), tokens.get("values"));
-                    }else{
+                    } else {
                         List<String> blank_list = new ArrayList<>();
                         deleteOperation.deleteOperation(tokens.get("table").get(0), tokens.get("database").get(0), tokens.get("location").get(0), blank_list);
                     }
                     break;
                 case INSERT:
                     InsertOperation writeTable = new InsertOperation();
-                    writeTable.checkInsertValues(tokens.get("table").get(0), tokens.get("database").get(0), tokens.get("location").get(0),tokens.get("values"));
+                    writeTable.checkInsertValues(tokens.get("table").get(0), tokens.get("database").get(0), tokens.get("location").get(0), tokens.get("values"));
                     break;
                 case SELECT:
                     SelectOperation selectOperation = new SelectOperation();
-                    if(tokens.containsKey("condition")) {
+                    if (tokens.containsKey("condition")) {
                         selectOperation.selectQueryOperation(tokens.get("table").get(0), tokens.get("database").get(0), tokens.get("location").get(0), tokens.get("columns"), tokens.get("condition"));
-                    }else{
+                    } else {
                         List<String> blank_list = new ArrayList<>();
                         selectOperation.selectQueryOperation(tokens.get("table").get(0), tokens.get("database").get(0), tokens.get("location").get(0), tokens.get("columns"), blank_list);
                     }
                     break;
                 case UPDATE:
                     UpdateOperation updateOperation = new UpdateOperation();
-                    if(tokens.containsKey("condition")) {
+                    if (tokens.containsKey("condition")) {
                         updateOperation.updateOperation(tokens.get("table").get(0), tokens.get("database").get(0), tokens.get("location").get(0), tokens.get("columns"), tokens.get("values"), tokens.get("condition"));
-                    }else{
+                    } else {
                         List<String> blank_list = new ArrayList<>();
                         updateOperation.updateOperation(tokens.get("table").get(0), tokens.get("database").get(0), tokens.get("location").get(0), tokens.get("columns"), tokens.get("values"), blank_list);
                     }
                     break;
                 case ERD:
-                    //call this function - Kishan
-                   // GenerateERD generateERD = new GenerateERD();
-                  //  generateERD.displayERD();
+                    GenerateERD generateERD = new GenerateERD();
+                    generateERD.displayERD();
+                    break;
                 case DUMP:
-                    //call this function - Kishan
-                    //GenerateDump generateDump = new GenerateDump();
-                    //generateDump.dumpGenerator();
+                    GenerateDump generateDump = new GenerateDump();
+                    generateDump.dumpGenerator();
+                    break;
                 default:
                     System.out.println("Something went wrong!");
                     break;
 
             }
             startQuerySession();
-        }else{
+        } else {
             startQuerySession();
         }
 

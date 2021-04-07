@@ -26,6 +26,10 @@ public class QueryParser{
             type = Types_of_query.ERD;
             query = null;
             return true;
+        }else if(input_query.equals("DUMP")){
+            type = Types_of_query.DUMP;
+            query = null;
+            return true;
         }
         if(queryHasType(input_query)){
             type = getStatementKeyword(input_query);

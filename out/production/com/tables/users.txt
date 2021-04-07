@@ -1,8 +1,6 @@
-#USER
-@user
-Username~Password
 naren~bmFyZW4=
 kishan~a2lzaGFu
 phil~cGhpbA==
 narendran~bmFyZW4=
 patel~cGF0ZWw=
+NAREN~bmFyZW4=
