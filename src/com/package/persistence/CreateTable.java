@@ -10,12 +10,27 @@ public class CreateTable {
 
         String result = null;
         int temp=1;
-        if(location.equalsIgnoreCase("local")){
+        File file = new File("src/com/package/DATABASE/"+dbName+".txt");;
+        if(location.equalsIgnoreCase("local")) {
+
+            if (file.exists()) { //check if database file exists
+                file = new File("src/com/package/TABLES/local/" + tablename + ".txt");
+            }
+            else{
+                result = "Database table not found";
+            }
+        }
+            else{
+                if(file.exists()) { //check if database file exists
+                    file = new File("src/com/package/TABLES/remote/" + tablename + ".txt");
+                }
+                else {
+                    result = "Database table not found";
+                }
+            }
             try
             {
-                File file = new File("src/com/package/DATABASE/"+dbName+".txt");
-                if(file.exists()){ //check if database file exists
-                    file = new File("src/com/package/TABLES/"+tablename+".txt");
+
                     if(!file.exists()){
                         FileWriter  fileWriter = new FileWriter("src/com/package/DATABASE/"+dbName+".txt",true);
                         if(fileWriter!=null){
@@ -69,10 +84,6 @@ public class CreateTable {
                         result = "Table already exists";
                     }
 
-                }
-                else{
-                    result = "Database table not found";
-                }
 
             }
             catch (IOException e)
@@ -80,10 +91,7 @@ public class CreateTable {
                 e.printStackTrace();
             }
             queryLog(tablename,dbName,columnNames,columnType,location,result, foreignKey);
-        }
-        else{
 
-        }
 
         return result;
     }
