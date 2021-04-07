@@ -1,7 +1,4 @@
 #FOREIGNKEY
 @tables
-T1 T2 StudentID
-T3 T4 EmployeeID
-T5 T6 whatever
-T8
-
+T2
+StudentID T1 T2

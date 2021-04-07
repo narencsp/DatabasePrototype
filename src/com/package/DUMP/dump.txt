@@ -1,0 +1,7 @@
+@table
+T2
+@column
+Name~Age~Gender~Address
+@meta
+varchar[20]PK~int[10]~varchar[10]~varchar[50]
+

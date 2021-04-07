@@ -17,7 +17,8 @@ public class QueryParser{
         DROP,
         INSERT,
         CREATE,
-        ERD
+        ERD,
+        DUMP
     }
     public boolean getQueryDetails(String input_query){
         this.input_query = input_query;
