@@ -7,7 +7,8 @@ import java.util.List;
 public class DeleteTable {
     String result = null;
 
-    public String deleteTable(String tableToDelete, String database, String location) {
+    public String deleteTable(String tableToDelete, String database, String location) throws Exception {
+
 
         File file = new File("src/com/package/DATABASE/" + database + ".txt");
 

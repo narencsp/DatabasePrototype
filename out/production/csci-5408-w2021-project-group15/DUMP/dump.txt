@@ -1,18 +1,11 @@
 users.txt
 #USER
-users.txt
 @user
-users.txt
 naren~bmFyZW4=
-users.txt
 kishan~a2lzaGFu
-users.txt
 phil~cGhpbA==
-users.txt
 narendran~bmFyZW4=
-users.txt
 patel~cGF0ZWw=
-users.txt
 NAREN~bmFyZW4=
 
 lock.txt
@@ -20,35 +13,20 @@ T1
 
 T2.txt
 #TABLE
-T2.txt
 @database
-T2.txt
 D1
-T2.txt
 @table
-T2.txt
 T2
-T2.txt
 @column
-T2.txt
 Name~Age~Gender~Address
-T2.txt
 @meta
-T2.txt
 varchar[20]PK~int[10]~varchar[10]~varchar[50]
-T2.txt
 @value
-T2.txt
 Joe~15~Male~France
-T2.txt
 Eve~20~Female~Canada
-T2.txt
 Suosa~35~Female~India
-T2.txt
 Kp~22~Male~Canda
-T2.txt
 tom~67~Male~Canada
-T2.txt
 hank~76~Male~Canada
 
 
