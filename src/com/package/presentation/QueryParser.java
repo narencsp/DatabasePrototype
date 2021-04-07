@@ -70,7 +70,6 @@ public class QueryParser{
     private boolean queryHasType(String input_query) {
         int splited_word_counter = 0;
         splitedForKeyword = input_query.trim().split("\\s+");
-        System.out.println(splitedForKeyword[0]);
         for(Types_of_query types_of_query : Types_of_query.values()){
             if(splitedForKeyword[splited_word_counter].equals(types_of_query.toString())){
                 return true;
@@ -92,15 +91,15 @@ public class QueryParser{
         return null;
     }
 
-    public static void main(String[] args){
+    /*public static void main(String[] args){
         QueryParser queryParser = new QueryParser();
         //boolean is_correct = queryParser.getQueryDetails("INSERT INTO remote.db1.student (as,sadsa) VALUES (4,5);");
         //boolean is_correct =queryParser.getQueryDetails("SELECT * FROM remote.db1.student WHERE id = 1;");
-        //boolean is_correct =queryParser.getQueryDetails("CREATE TABLE remote.db1.student (id INT PRIMARY KEY,name VARCHAR(100),last_name VARCHAR(100) FOREIGN KEY T1(last_name);");
+        boolean is_correct =queryParser.getQueryDetails("CREATE TABLE remote.db1.student (id INT PRIMARY KEY,name VARCHAR(100),last_name VARCHAR(100) FOREIGN KEY REFERENCES T1(last_name);");
         //boolean is_correct =queryParser.getQueryDetails("DELETE FROM remote.db1.student WHERE i=1;");
         //boolean is_correct =queryParser.getQueryDetails("DROP TABLE remote.db1.student;");
         //boolean is_correct =queryParser.getQueryDetails("UPDATE remote.db1.student SET name = 'kp' WHERE student_id = 1;");
-        boolean is_correct =queryParser.getQueryDetails("CREATE DATABASE db1;");
+        //boolean is_correct =queryParser.getQueryDetails("CREATE DATABASE db1;");
 
         if(is_correct){
             Map<String, List<String>> tokens = queryParser.get_tokens();
@@ -118,7 +117,6 @@ public class QueryParser{
             //System.out.println(tokens.get("values").get(0));
         }
 
-    }
-
+    }*/
 
 }

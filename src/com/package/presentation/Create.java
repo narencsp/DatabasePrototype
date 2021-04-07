@@ -14,9 +14,7 @@ public class Create implements Query{
         Pattern re = Pattern.compile(createRegex);
         Matcher matcher = re.matcher(statement);
         while (matcher.find()) {
-            System.out.println(matcher.group(1));
             table_name = matcher.group(1);
-            System.out.println(matcher.group(2));
             columns = matcher.group(2);
         }
         return matcher.matches();
@@ -54,7 +52,7 @@ public class Create implements Query{
                 if(columns.contains("FOREIGN")){
                     List<String> foreign_key = new ArrayList<>();
                     foreign_key.add(only_table);
-                    String foreign_table = columns_parts.get(4);
+                    String foreign_table = columns_parts.get(5);
                     List<String> foreign_table_list = Arrays.asList(foreign_table.split("\\("));
                     foreign_key.add(foreign_table_list.get(0));
                     foreign_key.add(columns_parts.get(0));

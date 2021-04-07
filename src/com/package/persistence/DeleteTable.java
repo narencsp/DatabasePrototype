@@ -48,6 +48,7 @@ public class DeleteTable {
             e.printStackTrace();
         }
         queryLog(database, tableToDelete, location, result);
+        Thread.sleep(10000);
         tableLock.clearLock(tableToDelete);
         return result;
 

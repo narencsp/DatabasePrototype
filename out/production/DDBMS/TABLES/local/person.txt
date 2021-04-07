@@ -1,0 +1,10 @@
+#TABLE
+@database
+kp1
+@table
+person
+@column
+id~name~address~phoneNumber
+@meta
+intPK~varchar(100)~varchar(100)~int
+@value

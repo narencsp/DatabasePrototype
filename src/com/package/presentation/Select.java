@@ -13,13 +13,9 @@ public class Select implements Query {
         Pattern re = Pattern.compile(selectRegex);
         Matcher matcher = re.matcher(statement);
         while (matcher.find()) {
-            System.out.println(matcher.group(1));
             columns = matcher.group(1).trim();
-            System.out.println(matcher.group(2));
             table_name = matcher.group(2).trim();
             if (matcher.group(3) != null) {
-                System.out.println(matcher.group(3));
-                System.out.println(matcher.group(4).trim());
                 condition = matcher.group(4);
             }
         }

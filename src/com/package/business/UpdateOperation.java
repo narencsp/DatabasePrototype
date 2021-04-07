@@ -105,11 +105,11 @@ public class UpdateOperation {
                 String column_name = condition_divided.get(0);
                 int column_number = get_column_number(column_names, column_name);
                 String column_type = meta.get(column_number);
-                if (column_type.contains("int") || column_type.contains("float")) {
+                if (column_type.contains("int") || column_type.contains("float") || column_type.contains("varchar")) {
                     for (int i = 0; i < row_values.size(); i++) {
                         List<String> row = row_values.get(i);
-                        int columnValueInt = Integer.parseInt(row.get(column_number));
-                        if (columnValueInt == Integer.parseInt(condition_divided.get(1))) {
+                        String columnValueInt = row.get(column_number);
+                        if (columnValueInt.equals(condition_divided.get(1))) {
                             List<List<String>> finalResultList = new ArrayList<>();
                             finalResultList.add(row);
                             finalResultList = getUpdatedList(finalResultList,columnNumberForUpdate,valueInQuery);
@@ -129,7 +129,7 @@ public class UpdateOperation {
         }
 
         UpdateTable updateTable = new UpdateTable();
-        String result = updateTable.updateOrDelete(map.get("table").get(0),map.get("database").get(0),map.get("location").get(0),map);
+        String result = updateTable.updateOrDelete(map.get("table").get(0),map.get("database").get(0),location,map);
         System.out.println(result);
     }
 

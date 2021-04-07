@@ -1,7 +1,6 @@
 package main;
 
 import business.*;
-import com.google.common.collect.Table;
 import persistence.*;
 import presentation.Create;
 import presentation.QueryParser;
@@ -59,7 +58,6 @@ public class Main {
         QueryParser queryParser = new QueryParser();
         if (queryParser.getQueryDetails(query)) {
             Map<String, List<String>> tokens = new HashMap<>();
-            System.out.println(queryParser.type.toString());
             if (!queryParser.type.toString().equals("ERD") && !queryParser.type.toString().equals("DUMP")) {
                 tokens = queryParser.get_tokens();
             }

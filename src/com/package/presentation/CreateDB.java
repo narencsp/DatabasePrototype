@@ -14,7 +14,6 @@ public class CreateDB implements Query {
         Pattern re = Pattern.compile(createRegex);
         Matcher matcher = re.matcher(statement);
         while (matcher.find()) {
-            System.out.println(matcher.group(1));
             db = matcher.group(1);
         }
         return matcher.matches();

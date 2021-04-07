@@ -17,12 +17,9 @@ public class Insert implements Query {
         Pattern re = Pattern.compile(insertRegex);
         Matcher matcher = re.matcher(statement);
         while (matcher.find()) {
-            System.out.println(matcher.group(1));
             table_name = matcher.group(1);
-            System.out.println(matcher.group(2));
             table_columns = matcher.group(2).trim();
             table_columns_list = Arrays.asList(table_columns.split(","));
-            System.out.println(matcher.group(3));
             values = matcher.group(3).trim();
             values_list = Arrays.asList(values.split(","));
 

@@ -14,11 +14,8 @@ public class Delete implements Query{
         Pattern re = Pattern.compile(deleteRegex);
         Matcher matcher = re.matcher(statement);
         while (matcher.find()) {
-                System.out.println(matcher.group(1));
                 table_name = matcher.group(1);
                 if(matcher.group(2)!=null) {
-                    System.out.println(matcher.group(2));
-                    System.out.println(matcher.group(3));
                     values = matcher.group(3);
                 }
 

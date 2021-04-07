@@ -14,7 +14,6 @@ public class Drop implements Query{
         Pattern re = Pattern.compile(dropRegex);
         Matcher matcher = re.matcher(statement);
         while (matcher.find()) {
-            System.out.println(matcher.group(1));
             table_name = matcher.group(1);
         }
         return matcher.matches();
@@ -35,7 +34,8 @@ public class Drop implements Query{
         location_list.add(table_name_list.get(0));
         tokens.put("location", location_list);
 
-        return tokens;    }
+        return tokens;
+    }
 
     @Override
     public String logEvent() {

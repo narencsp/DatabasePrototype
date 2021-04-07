@@ -13,13 +13,9 @@ public class Update implements Query{
         Pattern re = Pattern.compile(updateRegex);
         Matcher matcher = re.matcher(statement);
         while (matcher.find()) {
-            System.out.println(matcher.group(1));
             table_name = matcher.group(1);
-            System.out.println(matcher.group(2));
             value = matcher.group(2);
             if(matcher.group(3)!=null) {
-                System.out.println(matcher.group(3));
-                System.out.println(matcher.group(4));
                 condition = matcher.group(4);
             }
         }

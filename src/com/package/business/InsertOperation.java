@@ -22,25 +22,30 @@ public class InsertOperation {
         int total_columns = column_names.size();
 
         List<String> rows = map.get("value");
-        List<List<String>> row_values = get_row_data(rows,total_columns);
-
-        List<String> primayKeyColumnValues = new ArrayList<>();
-        for(int i = 0; i< row_values.size() ; i++){
-            List<String> row = row_values.get(i);
-            primayKeyColumnValues.add(row.get(indexOfPrimaryKey));
-        }
-
-        boolean isError = false;
-        for(String s : primayKeyColumnValues){
-            if(s.equals(valueToCompare)){
-                System.out.println("Duplicate values in Primary key! Insertion failed.");
-                isError = true;
-                break;
-            }
-        }
-        if(!isError){
+        if(rows.size()==0){
             WriteTable writeTable = new WriteTable();
-            writeTable.insertIntoTable(table,database,location,values);
+            writeTable.insertIntoTable(table, database, location, values);
+        }else {
+            List<List<String>> row_values = get_row_data(rows, total_columns);
+
+            List<String> primayKeyColumnValues = new ArrayList<>();
+            for (int i = 0; i < row_values.size(); i++) {
+                List<String> row = row_values.get(i);
+                primayKeyColumnValues.add(row.get(indexOfPrimaryKey));
+            }
+
+            boolean isError = false;
+            for (String s : primayKeyColumnValues) {
+                if (s.equals(valueToCompare)) {
+                    System.out.println("Duplicate values in Primary key! Insertion failed.");
+                    isError = true;
+                    break;
+                }
+            }
+            if (!isError) {
+                WriteTable writeTable = new WriteTable();
+                writeTable.insertIntoTable(table, database, location, values);
+            }
         }
     }
 

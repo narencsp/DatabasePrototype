@@ -76,6 +76,7 @@ public class ReadTable {
                 finalValues.add(value);
             }
         }
+        readTableMap.put("value",finalValues);
 
         queryLog(tableName, location);
 

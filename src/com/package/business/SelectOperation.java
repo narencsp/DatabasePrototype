@@ -35,7 +35,6 @@ public class SelectOperation {
                 List<String> condition_divided = Arrays.asList(condition.split(">"));
                 String column_name = condition_divided.get(0);
                 int column_number = get_column_number(column_names, column_name);
-                System.out.println(column_name + "  " + column_number);
                 String column_type = meta.get(column_number);
                 if (column_type.contains("int") || column_type.contains("float")) {
                     //for(List<String> row : row_values){

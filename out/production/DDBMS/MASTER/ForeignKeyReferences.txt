@@ -1,0 +1,6 @@
+#FOREIGNKEY
+@tables
+class	REFERENCES	id	
+
+
+board	student	id	
