@@ -1,6 +1,0 @@
-D1	T1	local	Table doesn't exist	->DELETE TABLE
-D1	T1	local	Table deleted successfully	->DELETE TABLE
-remote	T10	Table Deleted		->###MASTER RECORD UPDATED
-remote	T10	Table Deleted		->###MASTER RECORD UPDATED
-remote	T10	Table Deleted		->###MASTER RECORD UPDATED
-T10	remote	Table Deleted		->###MASTER RECORD UPDATED
