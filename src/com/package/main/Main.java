@@ -63,6 +63,10 @@ public class Main {
                 tokens = queryParser.get_tokens();
             }
             switch (queryParser.type) {
+                case CREATEDB:
+                    CreateDatabase database = new CreateDatabase();
+                    database.createDatabase(tokens.get("database").get(0));
+                    break;
                 case CREATE:
                     CreateTable createTable = new CreateTable();
 
@@ -118,8 +122,9 @@ public class Main {
                     generateERD.displayERD();
                     break;
                 case DUMP:
+                    List<String> dump = Arrays.asList(queryParser.dump_text.split(" "));
                     GenerateDump generateDump = new GenerateDump();
-                    generateDump.dumpGenerator();
+                    generateDump.dumpGenerator(dump.get(1));
                     break;
                 default:
                     System.out.println("Something went wrong!");

@@ -6,7 +6,7 @@ import java.util.List;
 public class CreateTable {
 
 
-    public String createTable(String tablename, String dbName, String location, List<String> columnNames, List<String> columnType, List<String> foreignKey) throws Exception{
+    public String createTable(String tablename, String dbName, String location, List<String> columnNames, List<String> columnType, List<String> foreignKey) throws Exception {
 
         String result = null;
         int temp=1;
@@ -69,22 +69,32 @@ public class CreateTable {
                             else{
                                 result = "Error in table";
                             }
+
+                            temp++;
                         }
-                        else{
-                            result = "Error in database table";
+                        temp = 1;
+                        fileWriter.append("\n" + "@meta\n");
+                        for (String column : columnType) {
+                            if (temp == (columnType.size())) {
+                                fileWriter.append(column);
+                            } else {
+                                fileWriter.append(column + "~");
+                            }
+
+                            temp++;
                         }
-                        fileWriter.flush();
-                        fileWriter.close();
-
-                       enterForeignKeyDetails(foreignKey);
-                       MasterRecord masterRecord = new MasterRecord();
-                       masterRecord.writeMasterRecord(tablename,location);
-                    }
-                    else{
-                        result = "Table already exists";
+                        fileWriter.append("\n" + "@value");
+                        result = "Inserted Successfully";
+                    } else {
+                        result = "Error in table";
                     }
 
 
+                enterForeignKeyDetails(foreignKey);
+                MasterRecord masterRecord = new MasterRecord();
+                masterRecord.writeMasterRecord(tablename, location);
+            } else {
+                result = "Table already exists";
             }
             catch (IOException e)
             {
@@ -96,37 +106,37 @@ public class CreateTable {
         return result;
     }
 
-    public void enterForeignKeyDetails(List<String> foreignKey) throws Exception{
-        FileWriter fileWriter = new FileWriter("src/com/package/MASTER/ForeignKeyReferences.txt",true);
-        String merge="";
-        for(int i=0;i<foreignKey.size();i++){
-            merge+=foreignKey.get(i)+"\t";
+    public void enterForeignKeyDetails(List<String> foreignKey) throws Exception {
+        FileWriter fileWriter = new FileWriter("src/com/package/MASTER/ForeignKeyReferences.txt", true);
+        String merge = "";
+        for (int i = 0; i < foreignKey.size(); i++) {
+            merge += foreignKey.get(i) + "\t";
         }
-        fileWriter.append(merge+"\n");
+        fileWriter.append(merge + "\n");
         fileWriter.flush();
         fileWriter.close();
     }
 
-    private void queryLog(String tableName, String dbName,List<String> columnName, List<String> columnType,String location,String response, List<String> foreignKey) {
+    private void queryLog(String tableName, String dbName, List<String> columnName, List<String> columnType, String location, String response, List<String> foreignKey) {
 
-        String temp ="";
-        for(String i : columnName){
-            temp+=i+"~";
+        String temp = "";
+        for (String i : columnName) {
+            temp += i + "~";
         }
-        String temp1 ="";
-        for(String i : columnType){
-            temp1+=i+"~";
+        String temp1 = "";
+        for (String i : columnType) {
+            temp1 += i + "~";
         }
-        String temp2 ="";
-        for(String i: foreignKey){
-            temp2+=foreignKey+" ";
+        String temp2 = "";
+        for (String i : foreignKey) {
+            temp2 += foreignKey + " ";
         }
         try {
             File file = new File("src/com/package/LOG/eventlog.txt");
             if (file.exists()) {
                 FileWriter fileWriter = new FileWriter(file, true);
                 if (fileWriter != null) {
-                    fileWriter.append(dbName+"\t"+location+"\t"+tableName+"\t"+temp+"\t"+temp1+"\t"+temp2+"\t"+columnType+"\t"+response+"\t->Create Table"+"\n");
+                    fileWriter.append(dbName + "\t" + location + "\t" + tableName + "\t" + temp + "\t" + temp1 + "\t" + temp2 + "\t" + columnType + "\t" + response + "\t->Create Table" + "\n");
                 }
                 fileWriter.flush();
                 fileWriter.close();

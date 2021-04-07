@@ -5,9 +5,24 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class GenerateDump {
-    public void dumpGenerator()  throws  Exception{
+    public void dumpGenerator(String location)  throws  Exception{
 
         File folder = new File("src/com/package/TABLES");
+        String result = null;
+        if (location.equalsIgnoreCase("local")) {
+            if (folder.exists()) {
+                folder = new File("src/com/package/TABLES/local");
+            } else {
+                result = "Database table not found";
+            }
+        } else if(location.equalsIgnoreCase("remote")){
+            if (folder.exists()) {
+                folder = new File("src/com/package/TABLES/remote");
+            } else {
+                result = "Database table not found";
+            }
+        }
+
         File[] listOfFiles = folder.listFiles();
         List<String> fileNames = new ArrayList<>();
         String line = "";

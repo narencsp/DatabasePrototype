@@ -11,40 +11,7 @@ public class UpdateOperation {
 
         Map<String,List<String>> map = new HashMap<>();
         ReadTable readTable = new ReadTable();
-        //map = readTable.readTableValues(table);
-
-        /*Map<String, List<String>> map = new HashMap<>();
-
-        List<String> table_name_list = new ArrayList<>();
-        table_name_list.add("T1");
-        map.put("table", table_name_list);
-
-        List<String> column_list = new ArrayList<>();
-        column_list.add("fname");
-        column_list.add("lname");
-        column_list.add("number");
-        map.put("column", column_list);
-
-        List<String> column_tlist = new ArrayList<>();
-        column_tlist.add("varchar(100)");
-        column_tlist.add("varchar(100)");
-        column_tlist.add("INT");
-        map.put("meta", column_tlist);
-
-        List<String> value = new ArrayList<>();
-        value.add("kishan");
-        value.add("patel");
-        value.add("234235");
-        value.add("kish");
-        value.add("pal");
-        value.add("2235");
-        value.add("shan");
-        value.add("atel");
-        value.add("235");
-        value.add("kihan");
-        value.add("pael");
-        value.add("2335");
-        map.put("value", value);*/
+        map = readTable.readTableValues(table,database,location);
 
         List<String> column_names = map.get("column");
         int total_columns = column_names.size();
@@ -82,7 +49,6 @@ public class UpdateOperation {
                 List<String> condition_divided = Arrays.asList(condition.split(">"));
                 String column_name = condition_divided.get(0);
                 int column_number = get_column_number(column_names, column_name);
-                System.out.println(column_name + "  " + column_number);
                 String column_type = meta.get(column_number);
                 if (column_type.contains("int") || column_type.contains("float")) {
 
@@ -163,8 +129,8 @@ public class UpdateOperation {
         }
 
         UpdateTable updateTable = new UpdateTable();
-        //String result = updateTable.updateOrDelete(map.get("table").get(0),map);
-        //System.out.println(result);
+        String result = updateTable.updateOrDelete(map.get("table").get(0),map.get("database").get(0),map.get("location").get(0),map);
+        System.out.println(result);
     }
 
     private List<List<String>> getUpdatedList(List<List<String>> result_list, int columnNumberForUpdate, List<String> valueInQuery) {

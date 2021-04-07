@@ -26,7 +26,6 @@ public class Create implements Query{
     public Map<String, List<String>> getTokens() {
         Map<String, List<String>> tokens = new HashMap<>();
         List<String> table_name_list = Arrays.asList(table_name.split("\\."));
-        //table_name_list.add(table_name);
         if(table_name_list.size()>1){
             List<String> table_name_temp_list = new ArrayList<>();
             table_name_temp_list.add(table_name_list.get(2));
@@ -74,7 +73,8 @@ public class Create implements Query{
         }
         tokens.put("column_name", column_name_list);
         tokens.put("column_type", column_type_list);
-        return tokens;    }
+        return tokens;
+    }
 
     @Override
     public String logEvent() {
