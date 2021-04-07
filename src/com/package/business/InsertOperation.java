@@ -13,40 +13,7 @@ public class InsertOperation {
 
         Map<String,List<String>> map = new HashMap<>();
         ReadTable readTable = new ReadTable();
-        //map = readTable.readTableValues(table);
-
-        /*Map<String, List<String>> map = new HashMap<>();
-
-        List<String> table_name_list = new ArrayList<>();
-        table_name_list.add("T1");
-        map.put("table", table_name_list);
-
-        List<String> column_list = new ArrayList<>();
-        column_list.add("fname");
-        column_list.add("lname");
-        column_list.add("number");
-        map.put("column", column_list);
-
-        List<String> column_tlist = new ArrayList<>();
-        column_tlist.add("varchar(100)PK");
-        column_tlist.add("varchar(100)");
-        column_tlist.add("INT");
-        map.put("meta", column_tlist);
-
-        List<String> value = new ArrayList<>();
-        value.add("kishan");
-        value.add("patel");
-        value.add("234235");
-        value.add("kish");
-        value.add("pal");
-        value.add("2235");
-        value.add("shan");
-        value.add("atel");
-        value.add("235");
-        value.add("kihan");
-        value.add("pael");
-        value.add("2335");
-        map.put("value", value);*/
+        map = readTable.readTableValues(table,database,location);
 
         int indexOfPrimaryKey = getIndexOfPrimaryKey(map.get("meta"));
         String valueToCompare = values.get(indexOfPrimaryKey);
@@ -73,7 +40,7 @@ public class InsertOperation {
         }
         if(!isError){
             WriteTable writeTable = new WriteTable();
-           // writeTable.insertIntoTable(table,values);
+            writeTable.insertIntoTable(table,database,location,values);
         }
     }
 

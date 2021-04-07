@@ -31,7 +31,6 @@ public class Delete implements Query{
         Map<String, List<String>> tokens = new HashMap<>();
 
         List<String> table_name_list = Arrays.asList(table_name.split("\\."));
-        //table_name_list.add(table_name);
         List<String> table_name_temp_list = new ArrayList<>();
         table_name_temp_list.add(table_name_list.get(2));
         tokens.put("table", table_name_temp_list);
