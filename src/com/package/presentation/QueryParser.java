@@ -9,6 +9,7 @@ public class QueryParser{
     String[] splitedForKeyword;
     String input_query;
     public Types_of_query type;
+    public String dump_text = "";
 
     public enum Types_of_query{
         SELECT,
@@ -18,7 +19,8 @@ public class QueryParser{
         INSERT,
         CREATE,
         ERD,
-        DUMP
+        DUMP,
+        CREATEDB
     }
     public boolean getQueryDetails(String input_query){
         this.input_query = input_query;
@@ -26,8 +28,9 @@ public class QueryParser{
             type = Types_of_query.ERD;
             query = null;
             return true;
-        }else if(input_query.equals("DUMP")){
+        }else if(input_query.contains("DUMP")){
             type = Types_of_query.DUMP;
+            dump_text = input_query;
             query = null;
             return true;
         }
@@ -48,12 +51,12 @@ public class QueryParser{
             case DELETE -> query = new Delete();
             case DROP -> query = new Drop();
             case CREATE -> query = new Create();
+            case CREATEDB -> query = new CreateDB();
 
         }
         if(query.checkSyntax(input_query)){
             System.out.println("Syntex is correct!");
             return true;
-            //query.getTokens(input_query);
         }else{
             System.out.println("Syntex is not correct!");
             return false;
@@ -80,6 +83,9 @@ public class QueryParser{
         int splited_word_counter = 0;
         for(Types_of_query types_of_query : Types_of_query.values()){
             if(splitedForKeyword[splited_word_counter].equals(types_of_query.toString())){
+                if(types_of_query.toString().equals("CREATE") && splitedForKeyword[1].equals("DATABASE")){
+                    return Types_of_query.CREATEDB;
+                }
                 return types_of_query;
             }
         }
@@ -93,13 +99,14 @@ public class QueryParser{
         //boolean is_correct =queryParser.getQueryDetails("CREATE TABLE remote.db1.student (id INT PRIMARY KEY,name VARCHAR(100),last_name VARCHAR(100) FOREIGN KEY T1(last_name);");
         //boolean is_correct =queryParser.getQueryDetails("DELETE FROM remote.db1.student WHERE i=1;");
         //boolean is_correct =queryParser.getQueryDetails("DROP TABLE remote.db1.student;");
-        boolean is_correct =queryParser.getQueryDetails("UPDATE remote.db1.student SET name = 'kp' WHERE student_id = 1;");
+        //boolean is_correct =queryParser.getQueryDetails("UPDATE remote.db1.student SET name = 'kp' WHERE student_id = 1;");
+        boolean is_correct =queryParser.getQueryDetails("CREATE DATABASE db1;");
 
         if(is_correct){
             Map<String, List<String>> tokens = queryParser.get_tokens();
-            System.out.println(tokens.get("table").get(0));
+            //System.out.println(tokens.get("table").get(0));
             System.out.println(tokens.get("database").get(0));
-            System.out.println(tokens.get("location").get(0));
+            //System.out.println(tokens.get("location").get(0));
             //System.out.println(tokens.get("column_type").get(0));
             //System.out.println(tokens.get("foreign_key").get(0));
             //System.out.println(tokens.get("foreign_key").get(1));

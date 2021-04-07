@@ -4,3 +4,4 @@ remote	T10	Table Deleted		->###MASTER RECORD UPDATED
 remote	T10	Table Deleted		->###MASTER RECORD UPDATED
 remote	T10	Table Deleted		->###MASTER RECORD UPDATED
 T10	remote	Table Deleted		->###MASTER RECORD UPDATED
+kp1	Database Created Successfully	->CREATE DATABASE

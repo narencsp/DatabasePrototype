@@ -5,6 +5,7 @@ import java.io.FileWriter;
 
 
 public class CreateDatabase {
+
     public String createDatabase(String dbName){
         String result = null;
         try {

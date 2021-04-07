@@ -31,7 +31,6 @@ public class Select implements Query {
         Map<String, List<String>> tokens = new HashMap<>();
 
         List<String> table_name_list = Arrays.asList(table_name.split("\\."));
-        //table_name_list.add(table_name);
         List<String> table_name_temp_list = new ArrayList<>();
         table_name_temp_list.add(table_name_list.get(2));
         tokens.put("table", table_name_temp_list);
@@ -48,14 +47,7 @@ public class Select implements Query {
         if (!condition.equals("")) {
             List<String> condition_column_list = new ArrayList<>();
             condition_column_list.add(condition);
-            //List<String> values_list = new ArrayList<>();
-
-            //List<String> condition_breakdown = Arrays.asList(condition.split("="));
-            //condition_column_list.add(condition_breakdown.get(0).trim());
-            //values_list.add(condition_breakdown.get(1).trim());
-
             tokens.put("condition", condition_column_list);
-            //tokens.put("condition_value", values_list);
         }
         return tokens;
     }
