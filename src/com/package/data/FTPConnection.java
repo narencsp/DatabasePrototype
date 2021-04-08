@@ -62,5 +62,4 @@ public class FTPConnection {
         sftpChannel.exit();
         session.disconnect();
     }
-
 }
