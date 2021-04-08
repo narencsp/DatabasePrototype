@@ -18,7 +18,7 @@ public class TableLock {
 
                 if(line.contains(tableName)){
                     System.out.println("The table is currently being accessed by another user, please wait!");
-                    Thread.sleep(10000);
+                    Thread.sleep(12000);
                     fileWriter = new FileWriter(new File("src/com/package/TABLES/lock.txt"));
                     if (fileWriter != null) {
                         fileWriter.append(tableName+"\n");

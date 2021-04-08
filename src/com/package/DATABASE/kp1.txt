@@ -1,5 +1,11 @@
-#DATABASE
-@name
+#TABLE
+@database
 kp1
 @table
+student
+@column
+id~name~address~phoneNumber
+@meta
+intPK~varchar(100)~varchar(100)~int
+@value
 student

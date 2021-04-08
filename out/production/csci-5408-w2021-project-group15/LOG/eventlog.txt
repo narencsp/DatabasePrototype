@@ -35,3 +35,12 @@ student	 	->TABLE LOCK INVOKED
 student	local	Table Added		->###MASTER RECORD UPDATED
 kp1	local	student	id~name~address~phoneNumber~	intPK~varchar(100)~varchar(100)~int~		[intPK, varchar(100), varchar(100), int]	Inserted Successfully	->Create Table
 student	 	->TABLE LOCK INVOKED
+student	local	->READ OPERATION
+student	 	->TABLE LOCK INVOKED
+student	local	Table Deleted		->###MASTER RECORD UPDATED
+kp1	student	local	Table deleted successfully	->DELETE TABLE
+student	 	->TABLE LOCK INVOKED
+student	local	Table Added		->###MASTER RECORD UPDATED
+kp1	local	student	id~name~address~phoneNumber~	intPK~varchar(100)~varchar(100)~int~		[intPK, varchar(100), varchar(100), int]	Inserted Successfully	->Create Table
+student	local	Table Added		->###MASTER RECORD UPDATED
+kp1	local	student	id~name~address~phoneNumber~	intPK~varchar(100)~varchar(100)~int~		[intPK, varchar(100), varchar(100), int]	Inserted Successfully	->Create Table

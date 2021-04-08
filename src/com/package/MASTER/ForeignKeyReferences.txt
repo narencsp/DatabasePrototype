@@ -1,7 +1,11 @@
 #FOREIGNKEY
 @tables
+T1
 T2
 StudentID T1 T2
+T3
+
+
 
 
 
