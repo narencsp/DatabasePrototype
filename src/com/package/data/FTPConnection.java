@@ -48,6 +48,14 @@ public class FTPConnection {
         }
     }
 
+    public void writeFile(String source, String destination) {
+        try {
+            sftpChannel.put(source, destination);
+        } catch (SftpException e) {
+            e.printStackTrace();
+        }
+    }
+
     public InputStream getFileInputStream(String filePath) {
         InputStream inputStream = null;
         try {
