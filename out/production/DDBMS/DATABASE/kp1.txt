@@ -1,0 +1,9 @@
+#DATABASE
+@name
+kp1
+@table
+student
+class
+person
+student
+board

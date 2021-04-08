@@ -1,0 +1,12 @@
+#FOREIGNKEY
+@tables
+
+
+
+
+
+
+
+
+
+professor	class	class_id	

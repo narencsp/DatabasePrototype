@@ -1,0 +1,12 @@
+#TABLE
+@database
+kp1
+@table
+student
+@column
+id~name~address~phoneNumber~age
+@meta
+intPK~varchar(100)~varchar(100)~int~int
+@value
+1~kishan~india~92340834~18
+2~naren~canada~92340834~22

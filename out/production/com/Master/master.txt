@@ -1,0 +1,4 @@
+#MASTER
+@local
+student
+@remote

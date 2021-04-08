@@ -9,13 +9,14 @@ public class UserLogin {
 
 
     private String userName, password;
+    public String recordName, tableName, recordValue;
 
     public enum UserLoginFlag{
         USER_VALID,
         USER_WRONGCREDENTIALS,
         USER_NULL
     }
-    UserLoginFlag ulf;
+    public UserLoginFlag ulf;
     public void getUsername() {
         Scanner in = new Scanner(System.in);
         System.out.println("Enter Username");
@@ -40,15 +41,18 @@ public class UserLogin {
         Boolean result=false;
         UserLoginFlag ret = null;
         if(userName.isEmpty() || password.isEmpty()){
+            enterUserLog(userName,"USER_NULL");
             ret = ulf.USER_NULL;
         }
         else{
 
              result = AuthenticateUser(userName, password);
              if(result.equals(true)){
+                 enterUserLog(userName,"USER_VALID");
                  ret =  ulf.USER_VALID;
              }
              else{
+                 enterUserLog(userName,"USER_WRONGCREDENTIALS");
                  ret = ulf.USER_WRONGCREDENTIALS;
              }
         }
@@ -57,19 +61,28 @@ public class UserLogin {
 
     protected Boolean AuthenticateUser(String userName, String password)  {
         String line = "";
-        String splitBy = ",";
+        String splitBy = "~";
 
         try
         {
 
-            BufferedReader br = new BufferedReader(new FileReader("src/com/package/presentation/users.csv"));
+            BufferedReader br = new BufferedReader(new FileReader("src/com/package/TABLES/users.txt"));
             while ((line = br.readLine()) != null)
             {
-                String[] users = line.split(splitBy);
-                users[1] =decryptPassword(users[1]);
-                if(users[0].equals(userName) && users[1].equals(password)){
-                    return true;
+                if(line.equals("#USER")){
+                    recordName = line;
                 }
+                else if(line.equals("@user")){
+                    recordValue = line;
+                }
+                else{
+                    String[] users = line.split(splitBy);
+                    users[1] =decryptPassword(users[1]);
+                    if(users[0].equals(userName) && users[1].equals(password)){
+                        return true;
+                    }
+                }
+
             }
 
         }
@@ -84,4 +97,19 @@ public class UserLogin {
         return new String(Base64.getMimeDecoder().decode(encryptedPassword));
     }
 
+    private void enterUserLog(String username, String response) {
+        try {
+            File file = new File("src/com/package/LOG/userlog.txt");
+            if (file.exists()) {
+                FileWriter fileWriter = new FileWriter(file, true);
+                if (fileWriter != null) {
+                    fileWriter.append(username+"\t"+response+"\t->LOGIN"+"\n");
+                }
+                fileWriter.flush();
+                fileWriter.close();
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+    }
 }

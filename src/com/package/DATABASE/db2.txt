@@ -1,0 +1,6 @@
+#DATABASE
+@name
+db2
+@table
+class
+professor

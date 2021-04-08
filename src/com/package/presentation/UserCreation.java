@@ -1,7 +1,5 @@
 package presentation;
 
-import main.Main;
-
 import java.io.*;
 import java.nio.charset.StandardCharsets;
 import java.util.Base64;
@@ -9,6 +7,7 @@ import java.util.Scanner;
 
 public class UserCreation {
     private String userName, password, rPassword;
+    public String recordName, recordValue;
 
     public enum UserCreateFlag{
         USER_PASSWORDMATCH,
@@ -46,18 +45,27 @@ public class UserCreation {
 
     protected Boolean checkUserAlreadyExists(String userName){
         String line = "";
-        String splitBy = ",";
+        String splitBy = "~";
 
         try
         {
 
-            BufferedReader br = new BufferedReader(new FileReader("src/com/package/presentation/users.csv"));
+            BufferedReader br = new BufferedReader(new FileReader("src/com/package/TABLES/users.txt"));
             while ((line = br.readLine()) != null)
             {
-                String[] users = line.split(splitBy);
-                if(users[0].equals(userName)){
-                    return  true;
+                if(line.equals("#USER")){
+                    recordName = line;
                 }
+                else if(line.equals("@user")){
+                    recordValue = line;
+                }
+                else{
+                    String[] users = line.split(splitBy);
+                    if(users[0].equals(userName)){
+                        return  true;
+                    }
+                }
+
             }
 
         }
@@ -72,15 +80,18 @@ public class UserCreation {
 
         UserCreation.UserCreateFlag ret = null;
         if(userName.isEmpty() || password.isEmpty()){
+            enterUserLog(userName,"USER_NULL");
             ret = ucf.USER_NULL;
         }
         else if(password.equals(rPassword)){
             password = encryptPassword(password);
             createUser(userName, password);
+            enterUserLog(userName,"USER_PASSWORDMATCH");
             ret =  ucf.USER_PASSWORDMATCH;
 
         }
         else{
+            enterUserLog(userName,"USER_PASSWORDMISMATCH");
             ret = ucf.USER_PASSWORDMISMATCH;
         }
         return ret;
@@ -96,14 +107,30 @@ public class UserCreation {
 
         FileWriter fw = null;
 
-        fw = new FileWriter("src/com/package/presentation/users.csv", true);
+        fw = new FileWriter("src/com/package/TABLES/users.txt", true);
 
         fw.append("\n");
-        fw.append(userName + ",");
+        fw.append(userName + "~");
         fw.append(password);
         fw.flush();
         fw.close();
 
+    }
+
+    private void enterUserLog(String username, String response) {
+        try {
+            File file = new File("src/com/package/LOG/userlog.txt");
+            if (file.exists()) {
+                FileWriter fileWriter = new FileWriter(file, true);
+                if (fileWriter != null) {
+                    fileWriter.append(username+"\t"+response+"\t->REGISTRATION"+"\n");
+                }
+                fileWriter.flush();
+                fileWriter.close();
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
     }
 
 }

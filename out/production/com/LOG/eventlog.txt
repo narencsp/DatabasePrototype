@@ -1,0 +1,260 @@
+D1	T1	local	Table doesn't exist	->DELETE TABLE
+D1	T1	local	Table deleted successfully	->DELETE TABLE
+remote	T10	Table Deleted		->###MASTER RECORD UPDATED
+remote	T10	Table Deleted		->###MASTER RECORD UPDATED
+remote	T10	Table Deleted		->###MASTER RECORD UPDATED
+T10	remote	Table Deleted		->###MASTER RECORD UPDATED
+kp1	Database Created Successfully	->CREATE DATABASE
+kp2	Database Created Successfully	->CREATE DATABASE
+kp1	Database Created Successfully	->CREATE DATABASE
+student	local	Table Added		->###MASTER RECORD UPDATED
+kp1	local	student	id~name~address~phoneNumber~	intPK~varchar(100)~varchar(100)~int~		[intPK, varchar(100), varchar(100), int]	Inserted Successfully	->Create Table
+student	 	->TABLE LOCK INVOKED
+student	local	Table Added		->###MASTER RECORD UPDATED
+kp1	local	student	id~name~address~phoneNumber~	intPK~varchar(100)~varchar(100)~int~		[intPK, varchar(100), varchar(100), int]	Inserted Successfully	->Create Table
+student	 	->TABLE LOCK INVOKED
+T1	 	->TABLE LOCK INVOKED
+T2	 	->TABLE LOCK INVOKED
+T1	 	->TABLE LOCK INVOKED
+T1	 	->TABLE LOCK INVOKED
+T2	 	->TABLE LOCK INVOKED
+T2	 	->TABLE LOCK INVOKED
+student	 	->TABLE LOCK INVOKED
+student	local	Table Added		->###MASTER RECORD UPDATED
+kp1	local	student	id~name~address~phoneNumber~	intPK~varchar(100)~varchar(100)~int~		[intPK, varchar(100), varchar(100), int]	Inserted Successfully	->Create Table
+student	 	->TABLE LOCK INVOKED
+student	 	->TABLE LOCK INVOKED
+student	local	Table Added		->###MASTER RECORD UPDATED
+kp1	local	student	id~name~address~phoneNumber~	intPK~varchar(100)~varchar(100)~int~		[intPK, varchar(100), varchar(100), int]	Inserted Successfully	->Create Table
+student	 	->TABLE LOCK INVOKED
+student	 	->TABLE LOCK INVOKED
+student	local	Table Added		->###MASTER RECORD UPDATED
+kp1	local	student	id~name~address~phoneNumber~	intPK~varchar(100)~varchar(100)~int~		[intPK, varchar(100), varchar(100), int]	Inserted Successfully	->Create Table
+student	 	->TABLE LOCK INVOKED
+student	 	->TABLE LOCK INVOKED
+student	local	Table Added		->###MASTER RECORD UPDATED
+kp1	local	student	id~name~address~phoneNumber~	intPK~varchar(100)~varchar(100)~int~		[intPK, varchar(100), varchar(100), int]	Inserted Successfully	->Create Table
+student	 	->TABLE LOCK INVOKED
+student	local	->READ OPERATION
+student	local	->READ OPERATION
+student	local	->READ OPERATION
+student	local	->READ OPERATION
+student	 	->TABLE LOCK INVOKED
+student	local	1~kishan~ahmedabad~92340834~	Data inserted successfully	->Write Operation
+student	 	->TABLE LOCK INVOKED
+student	local	->READ OPERATION
+student	local	->READ OPERATION
+student	 	->TABLE LOCK INVOKED
+student	local	2~naren~canada~2435435~	Data inserted successfully	->Write Operation
+student	 	->TABLE LOCK INVOKED
+student	local	->READ OPERATION
+student	local	->READ OPERATION
+student	 	->TABLE LOCK INVOKED
+[kp1]	[student]	id~name~address~phoneNumber	intPK~varchar(100)~varchar(100)~int	1~kishan~ahmedabad~92340834
+	local	Values Changed Successfully	->UPDATE TABLE
+student	 	->TABLE LOCK INVOKED
+student	local	->READ OPERATION
+student	 	->TABLE LOCK INVOKED
+student	local	2~kihan~aedabad~945440834~	Data inserted successfully	->Write Operation
+student	 	->TABLE LOCK INVOKED
+student	local	->READ OPERATION
+student	 	->TABLE LOCK INVOKED
+student	local	3~kisn~ahmead~92000034~	Data inserted successfully	->Write Operation
+student	 	->TABLE LOCK INVOKED
+student	local	->READ OPERATION
+student	 	->TABLE LOCK INVOKED
+student	local	4~kis~ahdaad~1111340834~	Data inserted successfully	->Write Operation
+student	 	->TABLE LOCK INVOKED
+student	local	->READ OPERATION
+student	 	->TABLE LOCK INVOKED
+student	local	5~krrrhan~adsdfd~97777834~	Data inserted successfully	->Write Operation
+student	 	->TABLE LOCK INVOKED
+student	local	->READ OPERATION
+student	 	->TABLE LOCK INVOKED
+student	local	6~kshan~hmdabad~20834~	Data inserted successfully	->Write Operation
+student	 	->TABLE LOCK INVOKED
+student	local	->READ OPERATION
+student	 	->TABLE LOCK INVOKED
+[kp1]	[student]	id~name~address~phoneNumber	intPK~varchar(100)~varchar(100)~int	1~kishan~ahmedabad~92340834
+2~kihan~aedabad~945440834
+3~kisn~ahmead~92000034
+4~kis~ahdaad~1111340834
+	local	Values Changed Successfully	->UPDATE TABLE
+student	 	->TABLE LOCK INVOKED
+student	local	->READ OPERATION
+student	local	->READ OPERATION
+student	local	->READ OPERATION
+student	local	->READ OPERATION
+student	local	->READ OPERATION
+student	local	->READ OPERATION
+student	 	->TABLE LOCK INVOKED
+[kp1]	[student]	id~name~address~phoneNumber	intPK~varchar(100)~varchar(100)~int	1~kishan~ahmedabad~92340834
+2~kihan~aedabad~945440834
+3~kisn~ahmead~92000034
+4~kis~ahdaad~1111340834
+	local	Values Changed Successfully	->UPDATE TABLE
+student	 	->TABLE LOCK INVOKED
+student	local	->READ OPERATION
+student	 	->TABLE LOCK INVOKED
+[kp1]	[student]	id~name~address~phoneNumber	intPK~varchar(100)~varchar(100)~int	1~tom~ahmedabad~92340834
+2~kihan~aedabad~945440834
+3~kisn~ahmead~92000034
+4~kis~ahdaad~1111340834
+	local	Values Changed Successfully	->UPDATE TABLE
+student	 	->TABLE LOCK INVOKED
+student	local	->READ OPERATION
+student	 	->TABLE LOCK INVOKED
+[kp1]	[student]	id~name~address~phoneNumber	intPK~varchar(100)~varchar(100)~int	1~tom~ahmedabad~92340834
+2~tom~aedabad~945440834
+3~tom~ahmead~92000034
+4~tom~ahdaad~1111340834
+	local	Values Changed Successfully	->UPDATE TABLE
+student	 	->TABLE LOCK INVOKED
+student	local	->READ OPERATION
+student	 	->TABLE LOCK INVOKED
+[kp1]	[student]	id~name~address~phoneNumber	intPK~varchar(100)~varchar(100)~int	1~tom~ahmedabad~92340834
+2~tom~aedabad~945440834
+3~kishan~ahmead~92000034
+4~kishan~ahdaad~1111340834
+	local	Values Changed Successfully	->UPDATE TABLE
+student	 	->TABLE LOCK INVOKED
+student	 	->TABLE LOCK INVOKED
+student	local	Table Deleted		->###MASTER RECORD UPDATED
+kp1	student	local	Table doesn't exist	->DELETE TABLE
+student	 	->TABLE LOCK INVOKED
+student	 	->TABLE LOCK INVOKED
+student	local	Table Deleted		->###MASTER RECORD UPDATED
+kp1	student	local	Table doesn't exist	->DELETE TABLE
+student	 	->TABLE LOCK INVOKED
+student	 	->TABLE LOCK INVOKED
+student	local	Table Deleted		->###MASTER RECORD UPDATED
+kp1	student	local	Table doesn't exist	->DELETE TABLE
+student	 	->TABLE LOCK INVOKED
+student	 	->TABLE LOCK INVOKED
+student	local	Table Deleted		->###MASTER RECORD UPDATED
+kp1	student	local	Table deleted successfully	->DELETE TABLE
+student	 	->TABLE LOCK INVOKED
+student	local	->READ OPERATION
+student	 	->TABLE LOCK INVOKED
+student	local	1~kishan~ahmedabad~92340834~	Data inserted successfully	->Write Operation
+student	 	->TABLE LOCK INVOKED
+student	local	->READ OPERATION
+student	 	->TABLE LOCK INVOKED
+student	local	2~khan~ahmbad~920555534~	Data inserted successfully	->Write Operation
+student	 	->TABLE LOCK INVOKED
+class	local	Table Added		->###MASTER RECORD UPDATED
+kp1	local	class	name~class~id~	varchar(100)PK~varchar(100)~int~	[class, REFERENCES, id] [class, REFERENCES, id] [class, REFERENCES, id] 	[varchar(100)PK, varchar(100), int]	Inserted Successfully	->Create Table
+person	local	Table Added		->###MASTER RECORD UPDATED
+kp1	local	person	id~name~address~phoneNumber~	intPK~varchar(100)~varchar(100)~int~		[intPK, varchar(100), varchar(100), int]	Inserted Successfully	->Create Table
+student	remote	Table Added		->###MASTER RECORD UPDATED
+kp1	remote	student	id~name~address~phoneNumber~	intPK~varchar(100)~varchar(100)~int~		[intPK, varchar(100), varchar(100), int]	Inserted Successfully	->Create Table
+student	remote	->READ OPERATION
+board	local	Table Added		->###MASTER RECORD UPDATED
+kp1	local	board	name~class~id~	varchar(100)PK~varchar(100)~int~	[board, student, id] [board, student, id] [board, student, id] 	[varchar(100)PK, varchar(100), int]	Inserted Successfully	->Create Table
+student	local	->READ OPERATION
+student	 	->TABLE LOCK INVOKED
+[kp1]	[student]	id~name~address~phoneNumber	intPK~varchar(100)~varchar(100)~int	1~tom~ahmedabad~92340834
+2~khan~ahmbad~920555534
+	local	Values Changed Successfully	->UPDATE TABLE
+student	 	->TABLE LOCK INVOKED
+student	local	->READ OPERATION
+student	 	->TABLE LOCK INVOKED
+[kp1]	[student]	id~name~address~phoneNumber	intPK~varchar(100)~varchar(100)~int	1~tom~ahmedabad~92340834
+2~tom~ahmbad~920555534
+	local	Values Changed Successfully	->UPDATE TABLE
+student	 	->TABLE LOCK INVOKED
+student	local	->READ OPERATION
+student	 	->TABLE LOCK INVOKED
+[kp1]	[student]	id~name~address~phoneNumber	intPK~varchar(100)~varchar(100)~int	1~tom~ahmedabad~92340834
+2~tom~ahmbad~920555534
+	local	Values Changed Successfully	->UPDATE TABLE
+student	local	->READ OPERATION
+student	 	->TABLE LOCK INVOKED
+[kp1]	[student]	id~name~address~phoneNumber	intPK~varchar(100)~varchar(100)~int	1~tom~ahmedabad~92340834
+2~tom~ahmbad~920555534
+	local	Values Changed Successfully	->UPDATE TABLE
+student	 	->TABLE LOCK INVOKED
+student	 	->TABLE LOCK INVOKED
+student	local	->READ OPERATION
+student	 	->TABLE LOCK INVOKED
+[kp1]	[student]	id~name~address~phoneNumber	intPK~varchar(100)~varchar(100)~int	1~tom~ahmedabad~92340834
+2~tom~ahmbad~920555534
+	local	Values Changed Successfully	->UPDATE TABLE
+student	 	->TABLE LOCK INVOKED
+student	local	->READ OPERATION
+student	 	->TABLE LOCK INVOKED
+[kp1]	[student]	id~name~address~phoneNumber	intPK~varchar(100)~varchar(100)~int	1~tom~ahmedabad~92340834
+2~tom~ahmbad~920555534
+	local	Values Changed Successfully	->UPDATE TABLE
+student	 	->TABLE LOCK INVOKED
+student	local	->READ OPERATION
+student	 	->TABLE LOCK INVOKED
+[kp1]	[student]	id~name~address~phoneNumber	intPK~varchar(100)~varchar(100)~int	1~tom~ahmedabad~92340834
+2~tom~ahmbad~920555534
+	local	Values Changed Successfully	->UPDATE TABLE
+student	 	->TABLE LOCK INVOKED
+student	local	->READ OPERATION
+student	 	->TABLE LOCK INVOKED
+[kp1]	[student]	id~name~address~phoneNumber	intPK~varchar(100)~varchar(100)~int	1~tom~ahmedabad~92340834
+2~tom~ahmbad~920555534
+	local	Values Changed Successfully	->UPDATE TABLE
+student	 	->TABLE LOCK INVOKED
+student	local	->READ OPERATION
+student	 	->TABLE LOCK INVOKED
+[kp1]	[student]	id~name~address~phoneNumber	intPK~varchar(100)~varchar(100)~int	1~toadfsd~ahmedabad~92340834
+2~tom~ahmbad~920555534
+	local	Values Changed Successfully	->UPDATE TABLE
+student	 	->TABLE LOCK INVOKED
+student	local	Table Added		->###MASTER RECORD UPDATED
+kp1	local	student	id~name~address~phoneNumber~age~	intPK~varchar(100)~varchar(100)~int~int~		[intPK, varchar(100), varchar(100), int, int]	Inserted Successfully	->Create Table
+student	local	->READ OPERATION
+student	 	->TABLE LOCK INVOKED
+student	local	1~kishan~ahmedabad~92340834~18~	Data inserted successfully	->Write Operation
+student	 	->TABLE LOCK INVOKED
+kp1	local	student	id~name~address~phoneNumber~age~	intPK~varchar(100)~varchar(100)~int~int~		[intPK, varchar(100), varchar(100), int, int]	Table already exists	->Create Table
+student1	local	Table Added		->###MASTER RECORD UPDATED
+kp1	local	student1	id~name~address~phoneNumber~age~	intPK~varchar(100)~varchar(100)~int~int~		[intPK, varchar(100), varchar(100), int, int]	Inserted Successfully	->Create Table
+student1	 	->TABLE LOCK INVOKED
+student1	local	Table Deleted		->###MASTER RECORD UPDATED
+kp1	student1	local	Table deleted successfully	->DELETE TABLE
+student1	 	->TABLE LOCK INVOKED
+student1	local	Table Added		->###MASTER RECORD UPDATED
+kp1	local	student1	id~name~address~phoneNumber~age~	intPK~varchar(100)~varchar(100)~int~int~		[intPK, varchar(100), varchar(100), int, int]	Inserted Successfully	->Create Table
+student1	 	->TABLE LOCK INVOKED
+student1	local	Table Deleted		->###MASTER RECORD UPDATED
+kp1	student1	local	Table deleted successfully	->DELETE TABLE
+student1	 	->TABLE LOCK INVOKED
+student1	local	Table Added		->###MASTER RECORD UPDATED
+kp1	local	student1	id~name~address~phoneNumber~age~	intPK~varchar(100)~varchar(100)~int~int~		[intPK, varchar(100), varchar(100), int, int]	Inserted Successfully	->Create Table
+student1	 	->TABLE LOCK INVOKED
+student1	local	Table Deleted		->###MASTER RECORD UPDATED
+kp1	student1	local	Table deleted successfully	->DELETE TABLE
+student1	 	->TABLE LOCK INVOKED
+kp1	student1	local	null	->DELETE TABLE
+student1	 	->TABLE LOCK INVOKED
+student1	 	->TABLE LOCK INVOKED
+student1	local	Table Added		->###MASTER RECORD UPDATED
+kp1	local	student1	id~name~address~phoneNumber~age~	intPK~varchar(100)~varchar(100)~int~int~		[intPK, varchar(100), varchar(100), int, int]	Inserted Successfully	->Create Table
+student1	 	->TABLE LOCK INVOKED
+student1	local	Table Deleted		->###MASTER RECORD UPDATED
+kp1	student1	local	Table deleted successfully	->DELETE TABLE
+student1	 	->TABLE LOCK INVOKED
+student1	local	Table Added		->###MASTER RECORD UPDATED
+kp1	local	student1	id~name~address~phoneNumber~age~	intPK~varchar(100)~varchar(100)~int~int~		[intPK, varchar(100), varchar(100), int, int]	Inserted Successfully	->Create Table
+student1	 	->TABLE LOCK INVOKED
+student1	local	Table Deleted		->###MASTER RECORD UPDATED
+kp1	student1	local	Table deleted successfully	->DELETE TABLE
+student1	 	->TABLE LOCK INVOKED
+kp1	student1	local	null	->DELETE TABLE
+student1	 	->TABLE LOCK INVOKED
+student1	 	->TABLE LOCK INVOKED
+student1	local	Table Added		->###MASTER RECORD UPDATED
+kp1	local	student1	id~name~address~phoneNumber~age~	intPK~varchar(100)~varchar(100)~int~int~		[intPK, varchar(100), varchar(100), int, int]	Inserted Successfully	->Create Table
+student1	 	->TABLE LOCK INVOKED
+student1	local	Table Deleted		->###MASTER RECORD UPDATED
+kp1	student1	local	Table deleted successfully	->DELETE TABLE
+student1	 	->TABLE LOCK INVOKED
+kp1	student1	local	null	->DELETE TABLE
+student1	 	->TABLE LOCK INVOKED
+student1	 	->TABLE LOCK INVOKED
+student	local	->READ OPERATION

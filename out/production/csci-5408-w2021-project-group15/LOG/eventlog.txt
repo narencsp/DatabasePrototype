@@ -1,0 +1,37 @@
+D1	T1	local	Table doesn't exist	->DELETE TABLE
+D1	T1	local	Table deleted successfully	->DELETE TABLE
+remote	T10	Table Deleted		->###MASTER RECORD UPDATED
+remote	T10	Table Deleted		->###MASTER RECORD UPDATED
+remote	T10	Table Deleted		->###MASTER RECORD UPDATED
+T10	remote	Table Deleted		->###MASTER RECORD UPDATED
+kp1	Database Created Successfully	->CREATE DATABASE
+kp2	Database Created Successfully	->CREATE DATABASE
+kp1	Database Created Successfully	->CREATE DATABASE
+student	local	Table Added		->###MASTER RECORD UPDATED
+kp1	local	student	id~name~address~phoneNumber~	intPK~varchar(100)~varchar(100)~int~		[intPK, varchar(100), varchar(100), int]	Inserted Successfully	->Create Table
+student	 	->TABLE LOCK INVOKED
+student	local	Table Added		->###MASTER RECORD UPDATED
+kp1	local	student	id~name~address~phoneNumber~	intPK~varchar(100)~varchar(100)~int~		[intPK, varchar(100), varchar(100), int]	Inserted Successfully	->Create Table
+student	 	->TABLE LOCK INVOKED
+T1	 	->TABLE LOCK INVOKED
+T2	 	->TABLE LOCK INVOKED
+T1	 	->TABLE LOCK INVOKED
+T1	 	->TABLE LOCK INVOKED
+T2	 	->TABLE LOCK INVOKED
+T2	 	->TABLE LOCK INVOKED
+student	 	->TABLE LOCK INVOKED
+student	local	Table Added		->###MASTER RECORD UPDATED
+kp1	local	student	id~name~address~phoneNumber~	intPK~varchar(100)~varchar(100)~int~		[intPK, varchar(100), varchar(100), int]	Inserted Successfully	->Create Table
+student	 	->TABLE LOCK INVOKED
+student	 	->TABLE LOCK INVOKED
+student	local	Table Added		->###MASTER RECORD UPDATED
+kp1	local	student	id~name~address~phoneNumber~	intPK~varchar(100)~varchar(100)~int~		[intPK, varchar(100), varchar(100), int]	Inserted Successfully	->Create Table
+student	 	->TABLE LOCK INVOKED
+student	 	->TABLE LOCK INVOKED
+student	local	Table Added		->###MASTER RECORD UPDATED
+kp1	local	student	id~name~address~phoneNumber~	intPK~varchar(100)~varchar(100)~int~		[intPK, varchar(100), varchar(100), int]	Inserted Successfully	->Create Table
+student	 	->TABLE LOCK INVOKED
+student	 	->TABLE LOCK INVOKED
+student	local	Table Added		->###MASTER RECORD UPDATED
+kp1	local	student	id~name~address~phoneNumber~	intPK~varchar(100)~varchar(100)~int~		[intPK, varchar(100), varchar(100), int]	Inserted Successfully	->Create Table
+student	 	->TABLE LOCK INVOKED

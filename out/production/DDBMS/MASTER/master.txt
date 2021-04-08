@@ -1,0 +1,5 @@
+#MASTER
+@local
+~person~board
+@remote
+class~student

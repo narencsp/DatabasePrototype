@@ -1,0 +1,10 @@
+#TABLE
+@database
+kp1
+@table
+class
+@column
+name~class~id
+@meta
+varchar(100)PK~varchar(100)~int
+@value
