@@ -1,5 +1,6 @@
 #DATABASE
 @name
-kp1
+db2
 @table
-student
+class
+professor

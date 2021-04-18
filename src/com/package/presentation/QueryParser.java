@@ -20,7 +20,8 @@ public class QueryParser{
         CREATE,
         ERD,
         DUMP,
-        CREATEDB
+        CREATEDB,
+        TRANSACTION
     }
     public boolean getQueryDetails(String input_query){
         this.input_query = input_query;
@@ -30,6 +31,11 @@ public class QueryParser{
             return true;
         }else if(input_query.contains("DUMP")){
             type = Types_of_query.DUMP;
+            dump_text = input_query;
+            query = null;
+            return true;
+        }else if(input_query.contains("TRANSACTION")){
+            type = Types_of_query.TRANSACTION;
             dump_text = input_query;
             query = null;
             return true;

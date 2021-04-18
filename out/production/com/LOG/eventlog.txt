@@ -258,3 +258,215 @@ kp1	student1	local	null	->DELETE TABLE
 student1	 	->TABLE LOCK INVOKED
 student1	 	->TABLE LOCK INVOKED
 student	local	->READ OPERATION
+db2	Database Created Successfully	->CREATE DATABASE
+class	local	Table Added		->###MASTER RECORD UPDATED
+db2	local	class	class_id~class_name~time~	intPK~varchar(40)~varchar(50)~		[intPK, varchar(40), varchar(50)]	Inserted Successfully	->Create Table
+class	local	->READ OPERATION
+class	 	->TABLE LOCK INVOKED
+class	local	1~DWDM~3pm~	Data inserted successfully	->Write Operation
+class	 	->TABLE LOCK INVOKED
+class	local	->READ OPERATION
+class	 	->TABLE LOCK INVOKED
+class	local	2~ASDC~7pm~	Data inserted successfully	->Write Operation
+class	 	->TABLE LOCK INVOKED
+class	local	->READ OPERATION
+class	 	->TABLE LOCK INVOKED
+class	local	3~CS~9pm~	Data inserted successfully	->Write Operation
+class	 	->TABLE LOCK INVOKED
+class	local	->READ OPERATION
+class	local	->READ OPERATION
+class	local	->READ OPERATION
+class	local	->READ OPERATION
+class	local	->READ OPERATION
+class	 	->TABLE LOCK INVOKED
+[db2]	[class]	class_id~class_name~time	intPK~varchar(40)~varchar(50)	1~DWDM~6am
+2~ASDC~6am
+3~CS~6am
+	local	Values Changed Successfully	->UPDATE TABLE
+class	 	->TABLE LOCK INVOKED
+class	local	->READ OPERATION
+class	 	->TABLE LOCK INVOKED
+[db2]	[class]	class_id~class_name~time	intPK~varchar(40)~varchar(50)	1~DWDM~6am
+2~ASDC~7am
+3~CS~7am
+	local	Values Changed Successfully	->UPDATE TABLE
+class	 	->TABLE LOCK INVOKED
+class	local	->READ OPERATION
+class	 	->TABLE LOCK INVOKED
+[db2]	[class]	class_id~class_name~time	intPK~varchar(40)~varchar(50)	1~DWDM~9am
+2~ASDC~7am
+3~CS~7am
+	local	Values Changed Successfully	->UPDATE TABLE
+class	 	->TABLE LOCK INVOKED
+book	remote	Table Added		->###MASTER RECORD UPDATED
+db2	remote	book	book_id~name~issue_date~	intPK~varchar(100)~varchar(100)~		[intPK, varchar(100), varchar(100)]	Inserted Successfully	->Create Table
+professor	local	Table Added		->###MASTER RECORD UPDATED
+db2	local	professor	prof_id~name~class_id~	intPK~varchar(50)~int~	[professor, class, class_id] [professor, class, class_id] [professor, class, class_id] 	[intPK, varchar(50), int]	Inserted Successfully	->Create Table
+class	local	->READ OPERATION
+class	 	->TABLE LOCK INVOKED
+[db2]	[class]	class_id~class_name~time	intPK~varchar(40)~varchar(50)	1~DWDM~9am
+2~ASDC~7am
+	local	Values Changed Successfully	->UPDATE TABLE
+class	 	->TABLE LOCK INVOKED
+student	local	->READ OPERATION
+student	 	->TABLE LOCK INVOKED
+[kp1]	[student]	id~name~address~phoneNumber~age	intPK~varchar(100)~varchar(100)~int~int	1~kishan~india~92340834~18
+2~naren~canada~92340834~22
+	local	Values Changed Successfully	->UPDATE TABLE
+student	 	->TABLE LOCK INVOKED
+book	 	->TABLE LOCK INVOKED
+book	remote	Table Deleted		->###MASTER RECORD UPDATED
+db2	book	remote	Table deleted successfully	->DELETE TABLE
+book	 	->TABLE LOCK INVOKED
+student	local	->READ OPERATION
+student	local	->READ OPERATION
+student	local	->READ OPERATION
+student	local	->READ OPERATION
+student	 	->TABLE LOCK INVOKED
+student	local	3~kp~gujarat~234235~80~	Data inserted successfully	->Write Operation
+student	 	->TABLE LOCK INVOKED
+student	local	->READ OPERATION
+student	 	->TABLE LOCK INVOKED
+student	local	4~kp~gujarat~234235~80~	Data inserted successfully	->Write Operation
+student	 	->TABLE LOCK INVOKED
+student	local	->READ OPERATION
+student	 	->TABLE LOCK INVOKED
+[kp1]	[student]	id~name~address~phoneNumber~age	intPK~varchar(100)~varchar(100)~int~int	1~kishan~india~92340834~30
+2~naren~canada~92340834~22
+3~kp~gujarat~234235~80
+4~kp~gujarat~234235~80
+	local	Values Changed Successfully	->UPDATE TABLE
+student	 	->TABLE LOCK INVOKED
+student	local	->READ OPERATION
+student	 	->TABLE LOCK INVOKED
+student	local	6~kp~gujarat~234235~80~	Data inserted successfully	->Write Operation
+student	 	->TABLE LOCK INVOKED
+student	local	->READ OPERATION
+student	 	->TABLE LOCK INVOKED
+[kp1]	[student]	id~name~address~phoneNumber~age	intPK~varchar(100)~varchar(100)~int~int	1~kishan~india~92340834~30
+2~naren~canada~92340834~22
+3~kp~gujarat~234235~80
+4~kp~gujarat~234235~30
+6~kp~gujarat~234235~80
+	local	Values Changed Successfully	->UPDATE TABLE
+student	 	->TABLE LOCK INVOKED
+student	local	->READ OPERATION
+student	 	->TABLE LOCK INVOKED
+student	local	7~kp~gujarat~234235~80~	Data inserted successfully	->Write Operation
+student	 	->TABLE LOCK INVOKED
+student	local	->READ OPERATION
+student	 	->TABLE LOCK INVOKED
+[kp1]	[student]	id~name~address~phoneNumber~age	intPK~varchar(100)~varchar(100)~int~int	1~kishan~india~92340834~30
+2~naren~canada~92340834~22
+3~kp~gujarat~234235~30
+4~kp~gujarat~234235~30
+6~kp~gujarat~234235~80
+~7~kp~gujarat~234235
+	local	Values Changed Successfully	->UPDATE TABLE
+student	 	->TABLE LOCK INVOKED
+student	local	->READ OPERATION
+student	local	->READ OPERATION
+student	 	->TABLE LOCK INVOKED
+[kp1]	[student]	id~name~address~phoneNumber~age	intPK~varchar(100)~varchar(100)~int~int	1~kishan~india~92340834~30
+2~naren~canada~92340834~22
+3~kp~gujarat~234235~30
+4~kp~gujarat~234235~30
+6~kp~gujarat~234235~80
+~7~kp~gujarat~234235
+	local	Values Changed Successfully	->UPDATE TABLE
+student	 	->TABLE LOCK INVOKED
+student	local	->READ OPERATION
+student	 	->TABLE LOCK INVOKED
+[kp1]	[student]	id~name~address~phoneNumber~age	intPK~varchar(100)~varchar(100)~int~int	1~kishan~india~92340834~30
+2~naren~canada~92340834~22
+3~kp~gujarat~234235~30
+4~kp~gujarat~234235~30
+6~kp~gujarat~234235~80
+~7~kp~gujarat~234235
+	local	Values Changed Successfully	->UPDATE TABLE
+student	 	->TABLE LOCK INVOKED
+student	local	->READ OPERATION
+student	 	->TABLE LOCK INVOKED
+[kp1]	[student]	id~name~address~phoneNumber~age	intPK~varchar(100)~varchar(100)~int~int	1~kishan~india~92340834~30
+2~naren~canada~92340834~30
+3~kp~gujarat~234235~30
+4~kp~gujarat~234235~30
+6~kp~gujarat~234235~80
+~7~kp~gujarat~234235
+	local	Values Changed Successfully	->UPDATE TABLE
+student	 	->TABLE LOCK INVOKED
+student	local	->READ OPERATION
+student	 	->TABLE LOCK INVOKED
+[kp1]	[student]	id~name~address~phoneNumber~age	intPK~varchar(100)~varchar(100)~int~int	1~kishan~india~92340834~40
+2~naren~canada~92340834~30
+3~kp~gujarat~234235~30
+4~kp~gujarat~234235~30
+6~kp~gujarat~234235~80
+~7~kp~gujarat~234235
+	local	Values Changed Successfully	->UPDATE TABLE
+student	 	->TABLE LOCK INVOKED
+student	local	->READ OPERATION
+student	 	->TABLE LOCK INVOKED
+[kp1]	[student]	id~name~address~phoneNumber~age	intPK~varchar(100)~varchar(100)~int~int	1~kishan~india~92340834~50
+2~naren~canada~92340834~30
+3~kp~gujarat~234235~30
+4~kp~gujarat~234235~30
+6~kp~gujarat~234235~80
+~7~kp~gujarat~234235
+	local	Values Changed Successfully	->UPDATE TABLE
+student	 	->TABLE LOCK INVOKED
+student	local	->READ OPERATION
+[kp1]	[student]	id~name~address~phoneNumber~age	intPK~varchar(100)~varchar(100)~int~int	1~kishan~india~92340834~10
+2~naren~canada~92340834~30
+3~kp~gujarat~234235~30
+4~kp~gujarat~234235~30
+6~kp~gujarat~234235~80
+~7~kp~gujarat~234235
+	local	Values Changed Successfully	->UPDATE TABLE
+student	local	->READ OPERATION
+[kp1]	[student]	id~name~address~phoneNumber~age	intPK~varchar(100)~varchar(100)~int~int	1~kishan~india~92340834~30
+2~naren~canada~92340834~30
+3~kp~gujarat~234235~30
+4~kp~gujarat~234235~30
+6~kp~gujarat~234235~80
+~7~kp~gujarat~234235
+	local	Values Changed Successfully	->UPDATE TABLE
+student	local	->READ OPERATION
+[kp1]	[student]	id~name~address~phoneNumber~age	intPK~varchar(100)~varchar(100)~int~int	1~kishan~india~92340834~60
+2~naren~canada~92340834~30
+3~kp~gujarat~234235~30
+4~kp~gujarat~234235~30
+6~kp~gujarat~234235~80
+~7~kp~gujarat~234235
+	local	Values Changed Successfully	->UPDATE TABLE
+student	local	->READ OPERATION
+student	local	->READ OPERATION
+[kp1]	[student]	id~name~address~phoneNumber~age	intPK~varchar(100)~varchar(100)~int~int	1~kishan~india~92340834~100
+2~naren~canada~92340834~30
+3~kp~gujarat~234235~30
+4~kp~gujarat~234235~30
+6~kp~gujarat~234235~80
+~7~kp~gujarat~234235
+	local	Values Changed Successfully	->UPDATE TABLE
+student	local	->READ OPERATION
+[kp1]	[student]	id~name~address~phoneNumber~age	intPK~varchar(100)~varchar(100)~int~int	1~kishan~india~92340834~100
+2~naren~canada~92340834~100
+3~kp~gujarat~234235~30
+4~kp~gujarat~234235~30
+6~kp~gujarat~234235~80
+~7~kp~gujarat~234235
+	local	Values Changed Successfully	->UPDATE TABLE
+student	local	->READ OPERATION
+student	local	->READ OPERATION
+student	 	->TABLE LOCK INVOKED
+student	local	8~kis~gusafat~234235~10~	Data inserted successfully	->Write Operation
+student	 	->TABLE LOCK INVOKED
+student	local	->READ OPERATION
+[kp1]	[student]	id~name~address~phoneNumber~age	intPK~varchar(100)~varchar(100)~int~int	1~kishan~india~92340834~30
+2~naren~canada~92340834~100
+3~kp~gujarat~234235~30
+4~kp~gujarat~234235~30
+6~kp~gujarat~234235~80
+~7~kp~gujarat~234235
+~8~kis~gusafat~234235
+	local	Values Changed Successfully	->UPDATE TABLE

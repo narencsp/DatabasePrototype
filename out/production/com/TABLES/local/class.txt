@@ -1,0 +1,12 @@
+#TABLE
+@database
+db2
+@table
+class
+@column
+class_id~class_name~time
+@meta
+intPK~varchar(40)~varchar(50)
+@value
+1~DWDM~9am
+2~ASDC~7am

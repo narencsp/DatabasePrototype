@@ -15,7 +15,7 @@ public class UpdateTable {
 
 
         TableLock tableLock = new TableLock();
-        tableLock.isTableLocked(tableName);
+        //tableLock.isTableLocked(tableName);
         File file = new File("src/com/package/DATABASE/" + databaseName + ".txt");
 
         if (location.equalsIgnoreCase("local")) {
@@ -60,7 +60,8 @@ public class UpdateTable {
             e.printStackTrace();
         }
         queryLog(tableValues, location, response);
-        tableLock.clearLock(tableName);
+        //Thread.sleep(8000);
+        //tableLock.clearLock(tableName);
 
         return response;
     }
@@ -80,7 +81,6 @@ public class UpdateTable {
     public String getValue(List<String> value, List<String> column) {
         int columnSize = column.size();
         StringBuilder finalValue = new StringBuilder();
-        System.out.println(value.size());
         for (int i = 1; i <= value.size(); i++) {
 
             if (i % columnSize == 0) {
@@ -89,7 +89,6 @@ public class UpdateTable {
                 finalValue.append(value.get(i - 1) + "~");
             }
         }
-        System.out.print(finalValue.toString());
         return finalValue.toString();
     }
 

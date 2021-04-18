@@ -12,12 +12,16 @@ import java.util.*;
 
 public class Main {
     static Scanner in;
+    String[] query_list;
+    private int current_query;
+    private boolean is_transaction = false;
 
     public static void main(String[] args) throws Exception {
-        displayInitial();
+        Main main = new Main();
+        main.displayInitial();
     }
 
-    private static void displayInitial() throws Exception {
+    public void displayInitial() throws Exception {
         Scanner in = new Scanner(System.in);
         System.out.println("1. User Creation\n2. User Login");
         int choice = in.nextInt();
@@ -50,15 +54,20 @@ public class Main {
 
     }
 
-    private static void startQuerySession() throws Exception {
+    public void startQuerySession() throws Exception {
         String query = "";
         System.out.println("Enter Query:");
         Scanner in = new Scanner(System.in);
         query = in.nextLine();
+        call_query(query);
+    }
+
+    public void call_query(String query) throws Exception {
+        System.out.println(query);
         QueryParser queryParser = new QueryParser();
         if (queryParser.getQueryDetails(query)) {
             Map<String, List<String>> tokens = new HashMap<>();
-            if (!queryParser.type.toString().equals("ERD") && !queryParser.type.toString().equals("DUMP")) {
+            if (!queryParser.type.toString().equals("ERD") && !queryParser.type.toString().equals("DUMP") && !queryParser.type.toString().equals("TRANSACTION")) {
                 tokens = queryParser.get_tokens();
             }
             switch (queryParser.type) {
@@ -125,15 +134,46 @@ public class Main {
                     GenerateDump generateDump = new GenerateDump();
                     generateDump.dumpGenerator(dump.get(1));
                     break;
+                case TRANSACTION:
+                    only_transactions();
+                    break;
                 default:
                     System.out.println("Something went wrong!");
                     break;
 
             }
-            startQuerySession();
+            if(is_transaction && current_query==query_list.length-1) {
+                is_transaction = false;
+                startQuerySession();
+            }else if(!is_transaction){
+                startQuerySession();
+            }
         } else {
             startQuerySession();
         }
+    }
+
+    public void only_transactions() throws Exception {
+        System.out.println("Enter the number of query you want to execute: ");
+        is_transaction = true;
+        Scanner in = new Scanner(System.in);
+        int total_query = in.nextInt();
+        query_list = new String[total_query];
+        in.nextLine();
+        for(int i=0;i<total_query;i++){
+            String query_temp = in.nextLine();
+            query_list[i] = query_temp;
+        }
+        for(int out = 0; out < total_query;out++){
+            current_query = out;
+            call_query(query_list[out]);
+        }
+        /*int i=1;
+        while(i<=total_query){
+            call_query(query_list[i-1]);
+            i++;
+            System.out.println("here");
+        }*/
 
     }
 

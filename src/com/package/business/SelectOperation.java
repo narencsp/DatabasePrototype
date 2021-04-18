@@ -74,12 +74,12 @@ public class SelectOperation {
                 String column_name = condition_divided.get(0);
                 int column_number = get_column_number(column_names, column_name);
                 String column_type = meta.get(column_number);
-                if (column_type.contains("int") || column_type.contains("float")) {
+                if (column_type.contains("int") || column_type.contains("float") || column_type.contains("varchar")) {
                     //for (List<String> row : row_values) {
                     for (int i = 0; i < row_values.size(); i++) {
                         List<String> row = row_values.get(i);
-                        int columnValueInt = Integer.parseInt(row.get(column_number));
-                        if (columnValueInt == Integer.parseInt(condition_divided.get(1))) {
+                        String columnValueInt = row.get(column_number);
+                        if (columnValueInt.equals(condition_divided.get(1))) {
                             result_list.add(row);
                         }
                     }

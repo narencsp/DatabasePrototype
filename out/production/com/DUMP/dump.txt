@@ -1,25 +1,28 @@
 class.txt
 #TABLE
 @database
-kp1
+db2
 @table
 class
 @column
-name~class~id
+class_id~class_name~time
 @meta
-varchar(100)PK~varchar(100)~int
+intPK~varchar(40)~varchar(50)
 @value
+1~DWDM~9am
+2~ASDC~7am
+3~CS~7am
 
-person.txt
+professor.txt
 #TABLE
 @database
-kp1
+db2
 @table
-person
+professor
 @column
-id~name~address~phoneNumber
+prof_id~name~class_id
 @meta
-intPK~varchar(100)~varchar(100)~int
+intPK~varchar(50)~int
 @value
 
 student.txt
@@ -29,11 +32,13 @@ kp1
 @table
 student
 @column
-id~name~address~phoneNumber
+id~name~address~phoneNumber~age
 @meta
-intPK~varchar(100)~varchar(100)~int
+intPK~varchar(100)~varchar(100)~int~int
 @value
-1~kishan~ahmedabad~92340834
-2~khan~ahmbad~920555534
+1~kishan~india~92340834~18
+2~naren~canada~92340834~22
+3~tom~us~92340834~23
+4~shrey~india~92340834~30
 
 
