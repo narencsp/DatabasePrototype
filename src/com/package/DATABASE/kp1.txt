@@ -3,3 +3,7 @@
 kp1
 @table
 student
+
+
+course
+term

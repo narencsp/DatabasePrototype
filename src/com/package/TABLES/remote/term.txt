@@ -1,0 +1,11 @@
+#TABLE
+@database
+kp1
+@table
+term
+@column
+id~name
+@meta
+INTPK~VARCHAR(100)
+@value
+1~winter

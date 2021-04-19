@@ -493,3 +493,153 @@ temp1	 	->TABLE LOCK INVOKED
 temp1	local	2~kishan~pal~	Data inserted successfully	->Write Operation
 temp1	 	->TABLE LOCK INVOKED
 temp1	local	->READ OPERATION
+professor	 	->TABLE LOCK INVOKED
+professor	local	Table Deleted		->###MASTER RECORD UPDATED
+db2	professor	local	Table deleted successfully	->DELETE TABLE
+professor	 	->TABLE LOCK INVOKED
+course	local	Table Added		->###MASTER RECORD UPDATED
+kp1	local	course	id~name~classroom~	INTPK~VARCHAR(100)~VARCHAR(100)~		[INTPK, VARCHAR(100), VARCHAR(100)]	Inserted Successfully	->Create Table
+course	local	->READ OPERATION
+course	 	->TABLE LOCK INVOKED
+course	local	1~CSCI5408~3A~	Data inserted successfully	->Write Operation
+course	 	->TABLE LOCK INVOKED
+course	local	->READ OPERATION
+course	 	->TABLE LOCK INVOKED
+course	local	2~CSCI5308~4B~	Data inserted successfully	->Write Operation
+course	 	->TABLE LOCK INVOKED
+term	remote	Table Added		->###MASTER RECORD UPDATED
+kp1	remote	term	id~name~	INTPK~VARCHAR(100)~		[INTPK, VARCHAR(100)]	Inserted Successfully	->Create Table
+term	remote	->READ OPERATION
+term	 	->TABLE LOCK INVOKED
+term	remote	1~winter~	Data inserted successfully	->Write Operation
+term	 	->TABLE LOCK INVOKED
+term	remote	->READ OPERATION
+term	 	->TABLE LOCK INVOKED
+term	remote	2~summer~	Data inserted successfully	->Write Operation
+term	 	->TABLE LOCK INVOKED
+course	local	->READ OPERATION
+term	 	->TABLE LOCK INVOKED
+term	remote	Table Deleted		->###MASTER RECORD UPDATED
+kp1	term	remote	Table deleted successfully	->DELETE TABLE
+term	 	->TABLE LOCK INVOKED
+course	 	->TABLE LOCK INVOKED
+course	local	Table Deleted		->###MASTER RECORD UPDATED
+kp1	course	local	Table deleted successfully	->DELETE TABLE
+course	 	->TABLE LOCK INVOKED
+course	local	Table Added		->###MASTER RECORD UPDATED
+kp1	local	course	id~name~classroom~	INTPK~VARCHAR(100)~VARCHAR(100)~		[INTPK, VARCHAR(100), VARCHAR(100)]	Inserted Successfully	->Create Table
+course	local	->READ OPERATION
+course	 	->TABLE LOCK INVOKED
+course	local	1~CSCI5408~3A~	Data inserted successfully	->Write Operation
+course	 	->TABLE LOCK INVOKED
+course	local	->READ OPERATION
+course	 	->TABLE LOCK INVOKED
+course	local	2~CSCI5308~4B~	Data inserted successfully	->Write Operation
+course	 	->TABLE LOCK INVOKED
+term	remote	Table Added		->###MASTER RECORD UPDATED
+kp1	remote	term	id~name~	INTPK~VARCHAR(100)~		[INTPK, VARCHAR(100)]	Inserted Successfully	->Create Table
+term	remote	->READ OPERATION
+term	 	->TABLE LOCK INVOKED
+term	remote	1~winter~	Data inserted successfully	->Write Operation
+term	 	->TABLE LOCK INVOKED
+term	remote	->READ OPERATION
+term	 	->TABLE LOCK INVOKED
+term	remote	2~summer~	Data inserted successfully	->Write Operation
+term	 	->TABLE LOCK INVOKED
+course	local	->READ OPERATION
+term	remote	->READ OPERATION
+term	 	->TABLE LOCK INVOKED
+term	remote	Table Deleted		->###MASTER RECORD UPDATED
+kp1	term	remote	Table doesn't exist	->DELETE TABLE
+term	 	->TABLE LOCK INVOKED
+course	 	->TABLE LOCK INVOKED
+course	local	Table Deleted		->###MASTER RECORD UPDATED
+kp1	course	local	Table doesn't exist	->DELETE TABLE
+course	 	->TABLE LOCK INVOKED
+term	 	->TABLE LOCK INVOKED
+term	remote	Table Deleted		->###MASTER RECORD UPDATED
+kp1	term	remote	Table doesn't exist	->DELETE TABLE
+term	 	->TABLE LOCK INVOKED
+course	local	Table Added		->###MASTER RECORD UPDATED
+kp1	local	course	id~name~classroom~	INTPK~VARCHAR(100)~VARCHAR(100)~		[INTPK, VARCHAR(100), VARCHAR(100)]	Inserted Successfully	->Create Table
+course	local	->READ OPERATION
+course	 	->TABLE LOCK INVOKED
+course	local	1~CSCI5408~3A~	Data inserted successfully	->Write Operation
+course	 	->TABLE LOCK INVOKED
+course	local	->READ OPERATION
+course	 	->TABLE LOCK INVOKED
+course	local	2~CSCI5308~4B~	Data inserted successfully	->Write Operation
+course	 	->TABLE LOCK INVOKED
+term	remote	Table Added		->###MASTER RECORD UPDATED
+kp1	remote	term	id~name~	INTPK~VARCHAR(100)~		[INTPK, VARCHAR(100)]	Inserted Successfully	->Create Table
+term	remote	->READ OPERATION
+term	 	->TABLE LOCK INVOKED
+term	remote	1~winter~	Data inserted successfully	->Write Operation
+term	 	->TABLE LOCK INVOKED
+term	remote	->READ OPERATION
+term	 	->TABLE LOCK INVOKED
+term	remote	2~summer~	Data inserted successfully	->Write Operation
+term	 	->TABLE LOCK INVOKED
+course	local	->READ OPERATION
+term	remote	->READ OPERATION
+course	local	->READ OPERATION
+[kp1]	[course]	id~name~classroom	INTPK~VARCHAR(100)~VARCHAR(100)	1~CSCI5408~3A
+2~CSCI5308~4B
+	local	Values Changed Successfully	->UPDATE TABLE
+term	remote	->READ OPERATION
+[kp1]	[term]	id~name	INTPK~VARCHAR(100)	1~winter
+2~summer
+	remote	Values Changed Successfully	->UPDATE TABLE
+course	local	->READ OPERATION
+term	remote	->READ OPERATION
+course	local	->READ OPERATION
+[kp1]	[course]	id~name~classroom	INTPK~VARCHAR(100)~VARCHAR(100)	1~CSCI5408~3A
+2~CSCI5308~4B
+	local	Values Changed Successfully	->UPDATE TABLE
+course	local	->READ OPERATION
+[kp1]	[course]	id~name~classroom	INTPK~VARCHAR(100)~VARCHAR(100)	1~CSCI5408~3A
+2~CSCI5308~4B
+	local	Values Changed Successfully	->UPDATE TABLE
+course	local	->READ OPERATION
+[kp1]	[course]	id~name~classroom	INTPK~VARCHAR(100)~VARCHAR(100)	1~CSCI5408~3A
+2~CSCI5308~4B
+	local	Values Changed Successfully	->UPDATE TABLE
+course	local	->READ OPERATION
+[kp1]	[course]	id~name~classroom	INTPK~VARCHAR(100)~VARCHAR(100)	1~CSCI5408~3A
+2~CSCI5308~5A
+	local	Values Changed Successfully	->UPDATE TABLE
+course	 	->TABLE LOCK INVOKED
+course	local	Table Deleted		->###MASTER RECORD UPDATED
+kp1	course	local	Table doesn't exist	->DELETE TABLE
+course	 	->TABLE LOCK INVOKED
+course	local	Table Added		->###MASTER RECORD UPDATED
+kp1	local	course	id~name~classroom~	INTPK~VARCHAR(100)~VARCHAR(100)~		[INTPK, VARCHAR(100), VARCHAR(100)]	Inserted Successfully	->Create Table
+course	local	->READ OPERATION
+course	 	->TABLE LOCK INVOKED
+course	local	1~CSCI5408~3A~	Data inserted successfully	->Write Operation
+course	 	->TABLE LOCK INVOKED
+course	local	->READ OPERATION
+course	 	->TABLE LOCK INVOKED
+course	local	2~CSCI5308~4B~	Data inserted successfully	->Write Operation
+course	 	->TABLE LOCK INVOKED
+term	remote	Table Added		->###MASTER RECORD UPDATED
+kp1	remote	term	id~name~	INTPK~VARCHAR(100)~		[INTPK, VARCHAR(100)]	Inserted Successfully	->Create Table
+term	remote	->READ OPERATION
+term	 	->TABLE LOCK INVOKED
+term	remote	1~winter~	Data inserted successfully	->Write Operation
+term	 	->TABLE LOCK INVOKED
+term	remote	->READ OPERATION
+term	 	->TABLE LOCK INVOKED
+term	remote	2~summer~	Data inserted successfully	->Write Operation
+term	 	->TABLE LOCK INVOKED
+course	local	->READ OPERATION
+term	remote	->READ OPERATION
+course	local	->READ OPERATION
+[kp1]	[course]	id~name~classroom	INTPK~VARCHAR(100)~VARCHAR(100)	1~CSCI5408~3A
+2~CSCI5308~5A
+	local	Values Changed Successfully	->UPDATE TABLE
+term	remote	->READ OPERATION
+[kp1]	[term]	id~name	INTPK~VARCHAR(100)	1~winter
+	remote	Values Changed Successfully	->UPDATE TABLE
+course	local	->READ OPERATION
+term	remote	->READ OPERATION

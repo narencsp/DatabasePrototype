@@ -8,10 +8,6 @@ id~name~address~phoneNumber~age
 @meta
 intPK~varchar(100)~varchar(100)~int~int
 @value
-1~kishan~india~92340834~30
-2~naren~canada~92340834~100
 3~kp~gujarat~234235~30
 4~kp~gujarat~234235~30
 6~kp~gujarat~234235~80
-7~kp~gujarat~234235
-

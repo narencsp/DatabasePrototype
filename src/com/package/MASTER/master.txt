@@ -1,4 +1,4 @@
 #MASTER
 @local
-student~class~professor
+student~~course
 @remote

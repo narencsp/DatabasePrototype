@@ -1,0 +1,12 @@
+#TABLE
+@database
+kp1
+@table
+course
+@column
+id~name~classroom
+@meta
+INTPK~VARCHAR(100)~VARCHAR(100)
+@value
+1~CSCI5408~3A
+2~CSCI5308~5A

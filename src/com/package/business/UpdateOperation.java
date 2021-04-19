@@ -105,7 +105,7 @@ public class UpdateOperation {
                 String column_name = condition_divided.get(0);
                 int column_number = get_column_number(column_names, column_name);
                 String column_type = meta.get(column_number);
-                if (column_type.contains("int") || column_type.contains("float") || column_type.contains("varchar")) {
+                if (column_type.toLowerCase().contains("int") || column_type.toLowerCase().contains("float")) {
                     for (int i = 0; i < row_values.size(); i++) {
                         List<String> row = row_values.get(i);
                         String columnValueInt = row.get(column_number);
