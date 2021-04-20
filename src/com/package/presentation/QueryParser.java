@@ -51,14 +51,13 @@ public class QueryParser{
 
     private boolean check_syntex(Types_of_query type) {
         switch (type) {
-            case SELECT -> query = new Select();
-            case INSERT -> query = new Insert();
-            case UPDATE -> query = new Update();
-            case DELETE -> query = new Delete();
-            case DROP -> query = new Drop();
-            case CREATE -> query = new Create();
-            case CREATEDB -> query = new CreateDB();
-
+            case SELECT: query = new Select();
+            case INSERT: query = new Insert();
+            case UPDATE: query = new Update();
+            case DELETE: query = new Delete();
+            case DROP: query = new Drop();
+            case CREATE: query = new Create();
+            case CREATEDB: query = new CreateDB();
         }
         if(query.checkSyntax(input_query)){
             System.out.println("Syntex is correct!");

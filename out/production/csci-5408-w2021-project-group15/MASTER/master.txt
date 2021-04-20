@@ -1,5 +1,4 @@
 #MASTER
 @local
-T1~T2~T3~student~student~student~student~student~student
+student~~course
 @remote
-T4~T5~T6~T9~T10

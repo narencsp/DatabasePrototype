@@ -4,7 +4,10 @@ kp1
 @table
 student
 @column
-id~name~address~phoneNumber
+id~name~address~phoneNumber~age
 @meta
-intPK~varchar(100)~varchar(100)~int
+intPK~varchar(100)~varchar(100)~int~int
 @value
+3~kp~gujarat~234235~30
+4~kp~gujarat~234235~30
+6~kp~gujarat~234235~80
